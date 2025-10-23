@@ -1,0 +1,482 @@
+/* Importamos las fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Selector universal */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none; /* Quitamos el subrayado del texto */
+    list-style: none; /* Quitamos las viñetas de los elementos de una lista */
+    box-sizing: border-box;
+}
+
+/* ======= ESTILOS DE LAS ETIQUETAS ======== */
+/* Selector de etiqueta html */
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Selector de etiqueta body */
+body {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 1rem;
+    background-color: azure !important; /* Definimos este estilo como prioritario */
+    color: rgb(80, 80, 80); /* Color del texto dentro del body */
+    user-select: none;
+}
+
+/* Selector de etiqueta header */
+header {
+    display: flex;
+    align-items: center; /* Alineamos los ítems a lo largo del eje secundario */
+    justify-content: space-between; /* Alineamos los ítems a lo largo del eje principal */
+    background-color: rgb(191, 247, 247);
+    width: 100vw;
+}
+
+/* Selector de etiqueta img */
+img {
+    display: block;
+    width: 100%;
+}
+
+/* Selector de etiqueta main */
+main {
+    position: relative;
+    margin-top: 1.5rem; /* Margen superior del main que evita que esté pegado al nav */
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+section {
+    padding: 1%;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+footer {
+    background-color: rgb(118, 223, 223);
+    padding: 8px 4px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========= ESTILOS DE INDEX.HTML ========== */
+/* Estilos del header */
+/* Contenedor del logo */
+.logo-container {
+    display: flex;
+    margin-right: auto; /* Logramos que la imagen esté siempre a la izquierda */
+    gap: 0.8rem;
+}
+
+/* Logo de la estación meteorológica */
+.logo-img {
+    width: 180px;  /* Ancho de la imagen */
+    height: 60px; /* Altura de la imagen */
+}
+
+/* Lista de enlaces de la barra superior */
+.lista-enlaces {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /*flex-wrap: wrap; */ /* Permite a los ítems pasar a la siguiente línea si no caben en el contenedor */
+    font-family: 'Figtree', sans-serif;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+/* Elementos de la lista de enlaces */
+.link {
+    color: rgb(99, 99, 99);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2rem;
+    height: 2.5rem;
+    align-items: center;
+    position: relative;
+}
+
+/* Estilos del main */
+
+/* Sección de bienvenida */
+
+/* Texto de bienvenida */
+.txt-bienvenida {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Contenedor de la imagen de la EMA */
+.ema-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* Imagen de la EMA */
+.ema-img {
+    border-radius: 16px;
+    width: 100%;
+    height: 50%;
+    max-width: 700px;
+}
+
+/* Seccción de datos actuales */
+
+.var-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-top: 1rem;
+}
+
+.var-met {
+    font-family: 'Figtree', sans-serif;
+    border-radius: 20px;
+    background-color: rgb(191, 247, 247);
+    padding: 5%;
+    margin-top: 1rem;
+}
+
+.tit-var-met {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.val-var-met {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+/* Sección de ubicación */
+
+.txt-ubicacion {
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 20px;
+}
+
+.mapa {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-grow: 1;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.mapa iframe {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    aspect-ratio: 4/3;
+    border: 0;
+    border-radius: 1rem;
+}
+
+/* Estilos del footer */
+
+.redes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+footer p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 3%;
+}
+
+.redes a {
+    color: rgb(3, 39, 61);
+    padding: 1%;
+}
+
+.disclaimer {
+    font-weight: 700;
+    padding: 1%;
+    font-size: 15px;
+}
+
+.copyright {
+    margin-left: 1%;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* ======== ESTILOS DE DATOS.HTML ======== */
+
+.tit-datos {
+    margin-bottom: 2%;
+}
+
+.text-datos {
+    font-size: 18px;
+    margin-bottom: 3%;
+}
+
+/* Contenedor de la tabla */
+.tabla-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Tabla */
+.tabla-datos {
+    background-color: rgb(191, 219, 251);
+    width: 100%;
+    border-radius: 2rem;
+    padding: 1rem;
+    font-family: 'Figtree', sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Cuerpo de la tabla */
+td {
+    height: 3rem;
+    border-bottom: 1px solid rgba(169, 193, 220, 0.304);
+
+}
+
+/* ======== ESTILOS DE CONTACTO.HTML ======== */
+.tit-contacto {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.text-contacto {
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    text-align: center;
+    padding-bottom: 16px;
+}
+
+/* Formulario */
+.formulario {
+    background-color: rgb(214, 226, 241);
+    font-size: 18px;
+    border-radius: 24px;
+    width: 60%;
+    margin: auto;
+}
+
+input[type="text"] {
+    color: rgb(50, 50, 50);
+    border: none;
+    width: 50%;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 16px;
+    border-bottom: 1px solid rgb(23, 63, 113);
+    border-radius: 4px;
+}
+
+input[type="email"] {
+    color: rgb(50, 50, 50);
+    border: none;
+    width: 50%;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 16px;
+    border-bottom: 1px solid rgb(23, 63, 113);
+    border-radius: 4px;
+}
+
+textarea {
+    color: rgb(50, 50, 50);
+    width: 90%;  /* Ocupa el 90% del ancho del formulario */
+    max-width: 100%;  /* Garantizamos que el área de texto no se salga del contenedor */
+    min-height: 200px;  /* Altura mínima */
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    margin-top: 16px;
+    border: 1px solid rgb(23, 63, 113);
+    border-radius: 8px;
+    padding: 4px;
+    font-family: 'Public Sans', sans-serif;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Botón de enviar */
+.bot-enviar {
+    margin-bottom: 32px;
+    padding: 12px;
+    background-color: rgb(23, 63, 113);
+    color: rgb(220, 220, 220);
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.bot-enviar:hover {
+    background-color: rgb(9, 26, 47);
+}
+
+/* ======== ESTILOS DE NOSOTROS.HTML ====== */
+#nosotros p {
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+#como-funciona p {
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#como-funciona li {
+    list-style: circle;
+    margin-left: 1rem;
+    font-size: 18px;
+}
+
+.acerca-container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    padding: 2%;
+    background-color: rgba(161, 203, 252, 0.733);
+    border-radius: 2rem;
+}
+
+.acerca-img {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.acerca-text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.img-nosotros {
+    max-width: 90%;
+    display: block;
+    border-radius: 1rem;
+}
+
+.modulos {
+    margin-bottom: 3%;
+}
+
+/* ======== MEDIA QUERIES ======== */
+/* Permite que se muestren tres contenedores de datos actuales por fila
+cuando el ancho está entre 700 y 1200 px */
+@media screen and (700px <= width <= 1200px) {
+    .var-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Permite que la imagen quede debajo del texto en la sección "Acerca de nosotros" cuando 
+el ancho es menor a 800px */
+@media screen and (max-width: 800px) {
+    .acerca-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3%;
+    }
+
+    .acerca-img {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    /* Modificamos el tamaño de los campos de texto del formulario */
+    .formulario {
+        width: 90%;
+    }
+
+    input[type="text"], input[type="email"] {
+        width: 70%;
+        font-size: 16px;
+    }
+
+    textarea {
+        font-size: 16px;
+    }
+
+}
+
+/* Permite que los elementos de la barra de navegación y los contenedores
+de datos actuales se muestren uno debajo del otro cuando el ancho es menor a 700 px */
+@media screen and (max-width: 700px) {
+    /* Convertimos al header en una columna en pantallas pequeñas */
+    header {
+        flex-direction: column; /* Pone el logo arriba y los enlaces abajo */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-container {
+        justify-content: center; /* Centra el logo dentro del contenedor */
+        width: 100%;
+        margin: 0;
+    }
+
+    .lista-enlaces {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .link {
+        margin: 0;
+    }
+    /* Ubicamos los contenedores de los datos actuales uno debajo del otro */
+    .var-container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1;
+        display:block;
+    }
+
+    /* Reducimos el tamaño de los elementos de la tabla de datos */
+    .tabla-datos {
+        font-size: 10px;
+        word-wrap: break-word;
+    }
+
+    .tabla-datos th, .tabla-datos td {
+        padding: 4px;
+    }
+
+}
