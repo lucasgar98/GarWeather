@@ -1,31 +1,30 @@
 /* Importamos las fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Selector universal */
+/* ======= SELECTOR UNIVERSAL ======== */
 * {
     margin: 0;
     padding: 0;
     text-decoration: none; /* Quitamos el subrayado del texto */
     list-style: none; /* Quitamos las viñetas de los elementos de una lista */
-    box-sizing: border-box;
+    box-sizing: border-box; /* Asegura que todos los elementos se midan correctamente */
 }
 
 /* ======= ESTILOS DE LAS ETIQUETAS ======== */
 /* Selector de etiqueta html */
 html {
-    scroll-behavior: smooth;
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
+    scroll-behavior: smooth; /* Hace que el scrolleo sea suave */
+    width: 100%; /* La página ocupa todo el ancho de la pantalla */
+    min-height: 100vh; /* La página ocupa toda la altura de la ventana (viewport) */
+    overflow-x: hidden; /* Garantiza que no haya desplazamiento horizontal */
 }
 
 /* Selector de etiqueta body */
 body {
     font-family: 'Public Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 16px; /* Tamño de la fuente base del documento (16px) */
     background-color: azure !important; /* Definimos este estilo como prioritario */
     color: rgb(80, 80, 80); /* Color del texto dentro del body */
-    user-select: none;
 }
 
 /* Selector de etiqueta header */
@@ -34,53 +33,53 @@ header {
     align-items: center; /* Alineamos los ítems a lo largo del eje secundario */
     justify-content: space-between; /* Alineamos los ítems a lo largo del eje principal */
     background-color: rgb(191, 247, 247);
-    width: 100vw;
-}
-
-/* Selector de etiqueta img */
-img {
-    display: block;
-    width: 100%;
+    width: 100vw; /* El header ocupa el 100% del ancho del viewport */
 }
 
 /* Selector de etiqueta main */
 main {
-    position: relative;
+    position: relative; /* Permite desplazar un elemento respecto a su posición original sin alterar el flujo del documento */
     margin-top: 1.5rem; /* Margen superior del main que evita que esté pegado al nav */
+    width: 100vw; /* El main ocupa el 100% del ancho del viewport */
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite a los ítems flexibles pasar a la siguiente línea si no caben en el contenedor */
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
+/* Selector de etiqueta h1 */
 h1 {
-    font-weight: 700;
-    font-size: 2rem;
+    font-weight: 700; /* Grosor de la fuente */
+    font-size: 2rem; /* Tamaño de la fuente */
 }
 
+/* Estilos de las secciones */
 section {
     padding: 1%;
-    flex-grow: 1;
-    flex-shrink: 1;
+    flex-grow: 1; /* Permite que un ítem crezca para ocupar el espacio disponible */
+    flex-shrink: 1; /* Permite que un ítem se encoja si es necesario para evitar desbordamiento */
 }
 
+/* Estilos del pie de página */
 footer {
     background-color: rgb(118, 223, 223);
     padding: 8px 4px;
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
     justify-content: center;
     align-items: center;
+    text-align: center; /* Texto alineado al centro */
+
 }
 
 /* ========= ESTILOS DE INDEX.HTML ========== */
-/* Estilos del header */
+
+/* ========= ESTILOS DEL HEADER ========= */
 /* Contenedor del logo */
 .logo-container {
     display: flex;
     margin-right: auto; /* Logramos que la imagen esté siempre a la izquierda */
-    gap: 0.8rem;
+    padding-left: 1%;
 }
 
 /* Logo de la estación meteorológica */
@@ -94,7 +93,6 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    /*flex-wrap: wrap; */ /* Permite a los ítems pasar a la siguiente línea si no caben en el contenedor */
     font-family: 'Figtree', sans-serif;
     padding-right: 2rem;
     padding-left: 2rem;
@@ -107,12 +105,10 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-left: 2rem;
-    height: 2.5rem;
     align-items: center;
-    position: relative;
 }
 
-/* Estilos del main */
+/* ========= ESTILOS DEL MAIN ========= */
 
 /* Sección de bienvenida */
 
@@ -132,29 +128,31 @@ footer {
 
 /* Imagen de la EMA */
 .ema-img {
-    border-radius: 16px;
-    width: 100%;
-    height: 50%;
-    max-width: 700px;
+    border-radius: 16px; /* La imagen tiene borde redondeado */
+    width: 100%; /* La imagen ocupa el 100% del contenedor padre */
+    max-width: 700px; /* Ancho máximo de 700 px */
 }
 
 /* Seccción de datos actuales */
 
+/* Contenedor que agrupa a todos los datos actuales */
 .var-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 16px;
+    display: grid; /* Definimos el contenedor de los datos actuales como un grid */
+    grid-template-columns: repeat(6, 1fr); /* El grid tendrá 6 columnas */
+    gap: 16px; /* Separación entre los elementos del grid */
     margin-top: 1rem;
 }
 
+/* Contenedor de cada variable meteorológica */
 .var-met {
     font-family: 'Figtree', sans-serif;
-    border-radius: 20px;
+    border-radius: 20px; /* Cada elemento del grid tendrá un borde redondeado de 20 px */
     background-color: rgb(191, 247, 247);
     padding: 5%;
     margin-top: 1rem;
 }
 
+/* Título de la variable meteorológica en el contenedor */
 .tit-var-met {
     font-size: 16px;
     text-align: center;
@@ -162,62 +160,69 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+/* Valor de la variable meteorológica */
 .val-var-met {
     text-align: center;
     margin-bottom: 0.5rem;
 }
 
 /* Sección de ubicación */
-
+/* Texto ubicado debajo del título ubicación */
 .txt-ubicacion {
     margin-top: 1rem;
     margin-bottom: 1.2rem;
     font-size: 20px;
 }
 
+/* Contenedor del mapa */
 .mapa {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
     flex-grow: 1;
-    width: 100%;
-    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%; /* Margen inferior */
 }
 
 .mapa iframe {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    aspect-ratio: 4/3;
+    width: 100%; /* El mapa ocupa el 100% del contenedor padre */
+    max-width: 700px; /* Tamaño máximo de 700px */
+    height: auto; /* Altura automática */
+    aspect-ratio: 4/3; /* Relación de aspecto de 4:3 */
     border: 0;
     border-radius: 1rem;
 }
 
-/* Estilos del footer */
+/* ========= ESTILOS DEL FOOTER ========= */
 
+/* Contenedor de las redes sociales */
 .redes {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
-footer p {
+/* Logotipos de las redes sociales */
+.redes > a {
+    color: rgb(3, 39, 61);
+}
+
+/* Texto "Seguinos en nuestras redes" */
+.txt-redes {
     font-size: 18px;
     font-weight: 600;
     margin-right: 3%;
 }
 
-.redes a {
-    color: rgb(3, 39, 61);
-    padding: 1%;
-}
-
+/* Descargo de responsabilidad (disclaimer) */
 .disclaimer {
     font-weight: 700;
     padding: 1%;
     font-size: 15px;
 }
 
+/* Copyright */
 .copyright {
     margin-left: 1%;
     font-size: 14px;
@@ -225,11 +230,12 @@ footer p {
 }
 
 /* ======== ESTILOS DE DATOS.HTML ======== */
-
+/* Título "Últimos datos" */
 .tit-datos {
     margin-bottom: 2%;
 }
 
+/* Texto que está por encima de la tabla */
 .text-datos {
     font-size: 18px;
     margin-bottom: 3%;
@@ -237,8 +243,6 @@ footer p {
 
 /* Contenedor de la tabla */
 .tabla-container {
-    position: relative;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -247,27 +251,28 @@ footer p {
 /* Tabla */
 .tabla-datos {
     background-color: rgb(191, 219, 251);
-    width: 100%;
+    width: 100%; /* La tabla ocupa el 100% del contenedor padre */
     border-radius: 2rem;
     padding: 1rem;
     font-family: 'Figtree', sans-serif;
     font-size: 14px;
-    text-align: center;
+    text-align: center; /* Texto alineado al centro */
 }
 
-/* Cuerpo de la tabla */
+/* Celdas de la tabla */
 td {
-    height: 3rem;
-    border-bottom: 1px solid rgba(169, 193, 220, 0.304);
-
+    height: 3rem; /* Altura de cada celda */
+    border-bottom: 1px solid rgba(169, 193, 220, 0.304); /* Borde inferior de cada celda */
 }
 
 /* ======== ESTILOS DE CONTACTO.HTML ======== */
+/* Título "Nos interesa conocer su opinión */
 .tit-contacto {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 
+/* Texto por encima del formulario */
 .text-contacto {
     font-size: 18px;
     margin-bottom: 1.5rem;
@@ -284,117 +289,109 @@ td {
     background-color: rgb(214, 226, 241);
     font-size: 18px;
     border-radius: 24px;
-    width: 60%;
+    width: 60%; /* El formulario ocupa un 60% del ancho del contenedor padre */
     margin: auto;
 }
 
-input[type="text"] {
+/* Campos de nombre y apellido y de dirección de correo electrónico */
+input[type="text"], input[type="email"] {
     color: rgb(50, 50, 50);
-    border: none;
-    width: 50%;
+    width: 50%; /* Ancho del 50% */
     font-size: 18px;
     font-weight: 400;
     margin: 16px;
-    border-bottom: 1px solid rgb(23, 63, 113);
+    border: 1px solid rgb(23, 63, 113); /* Borde sólido de 1 px */
     border-radius: 4px;
 }
 
-input[type="email"] {
-    color: rgb(50, 50, 50);
-    border: none;
-    width: 50%;
-    font-size: 18px;
-    font-weight: 400;
-    margin: 16px;
-    border-bottom: 1px solid rgb(23, 63, 113);
-    border-radius: 4px;
-}
-
+/* Área de texto (campo de mensaje) */
 textarea {
     color: rgb(50, 50, 50);
     width: 90%;  /* Ocupa el 90% del ancho del formulario */
     max-width: 100%;  /* Garantizamos que el área de texto no se salga del contenedor */
-    min-height: 200px;  /* Altura mínima */
+    min-height: 200px;  /* Altura mínima de 200px*/
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 32px;
-    margin-top: 16px;
+    margin-bottom: 32px;  /* Margen inferior */
+    margin-top: 16px;  /* Margen superior */
     border: 1px solid rgb(23, 63, 113);
     border-radius: 8px;
     padding: 4px;
     font-family: 'Public Sans', sans-serif;
 }
 
-label {
+.formulario > label {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: bold; /* Texto en negrita */
 }
 
 /* Botón de enviar */
 .bot-enviar {
-    margin-bottom: 32px;
+    margin-bottom: 24px; /* Margen inferior */
     padding: 12px;
     background-color: rgb(23, 63, 113);
-    color: rgb(220, 220, 220);
+    color: rgb(220, 220, 220); /* Color del texto dentro del botón */
     font-size: 16px;
     border-radius: 10px;
 }
 
+/* Cambiamos el color del botón al posicionar el cursor sobre el mismo */
 .bot-enviar:hover {
     background-color: rgb(9, 26, 47);
 }
 
 /* ======== ESTILOS DE NOSOTROS.HTML ====== */
+
+/* Sección nosotros */
+/* Párrafos */
 #nosotros p {
     font-size: 20px;
     margin-top: 1rem;
 }
 
-#como-funciona p {
-    font-size: 20px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-#como-funciona li {
-    list-style: circle;
-    margin-left: 1rem;
-    font-size: 18px;
-}
-
+/* Contenedor sobre nosotros */
 .acerca-container {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 3rem;
+    gap: 3rem; /* Separación entre el texto y la imagen */
     padding: 2%;
     background-color: rgba(161, 203, 252, 0.733);
     border-radius: 2rem;
 }
 
-.acerca-img {
+/* Contenedores de la imagen y el texto */
+.acerca-img, .acerca-text {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0%;
 }
 
-.acerca-text {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-}
-
+/* Imagen del contenedor sobre nosotros */
 .img-nosotros {
-    max-width: 90%;
+    max-width: 90%; /* Ancho máximo del 90% */
     display: block;
     border-radius: 1rem;
 }
 
-.modulos {
+/* Sección cómo funciona */
+/* Párrafo */
+#como-funciona p {
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+/* Lista desordenada */
+#como-funciona ul {
+    margin-left: 1%; /* Margen izquierdo */
+    margin-right: 1%; /* Margen derecho */
     margin-bottom: 3%;
+}
+/* Elementos de la lista */
+#como-funciona li {
+    list-style: circle; /* Estilo de la viñeta (círculo) */
+    margin-left: 1rem;
+    font-size: 18px;
 }
 
 /* ======== MEDIA QUERIES ======== */
@@ -406,8 +403,8 @@ cuando el ancho está entre 700 y 1200 px */
     }
 }
 
-/* Permite que la imagen quede debajo del texto en la sección "Acerca de nosotros" cuando 
-el ancho es menor a 800px */
+/* Permite que la imagen quede debajo del texto en la sección "Acerca de nosotros" y
+que se reduzca el tamaño de los campos del formulario cuando el ancho es menor a 800px */
 @media screen and (max-width: 800px) {
     .acerca-container {
         flex-direction: column;
@@ -447,12 +444,6 @@ de datos actuales se muestren uno debajo del otro cuando el ancho es menor a 700
         justify-content: center;
     }
 
-    .logo-container {
-        justify-content: center; /* Centra el logo dentro del contenedor */
-        width: 100%;
-        margin: 0;
-    }
-
     .lista-enlaces {
         flex-direction: column;
         gap: 0.5rem;
@@ -460,8 +451,16 @@ de datos actuales se muestren uno debajo del otro cuando el ancho es menor a 700
     }
 
     .link {
+        height: 2.5rem; /* Altura de los contenedores de los enlaces */
         margin: 0;
     }
+    /* Centramos el logo dentro del contenedor */
+    .logo-container {
+        justify-content: center; 
+        width: 100%;
+        margin: 0;
+    }
+
     /* Ubicamos los contenedores de los datos actuales uno debajo del otro */
     .var-container {
         grid-template-columns: repeat(1, 1fr);
