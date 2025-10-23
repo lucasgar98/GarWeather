@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estación meteorológica automática - GarWeather</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- Agregamos la imagen dentro de un bloque div genérico para tener mayor control -->
+        <div class="logo-container">
+            <img class="logo-img" src="img/logo_ema.png" alt="logo del sitio">
+        </div>
+        <!-- Barra superior de la página web-->
+        <nav>
+            <ul class="lista-enlaces">
+                <li>
+                    <a class="link" href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a class="link" href="datos.html">Datos</a>
+                </li>
+                <li>
+                    <a class="link" href="nosotros.html">Quiénes somos</a>
+                </li>
+                <li>
+                    <a class="link" href="contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bienvenida">
+            <h1>Estación meteorológica GarWeather</h1>
+            <p class="txt-bienvenida">Bienvenidos a GarWeather, una estación meteorológica automática moderna para uso doméstico que satisface las necesidades actuales de los usuarios.</p>
+            <div class="ema-container">
+                <img class="ema-img" src="img/ema_tripode.jpeg" alt="imagen de la EMA">
+            </div>
+        </section>
+
+        <section class="datos-actuales">
+            <h1>Datos actuales</h1>
+            <small>Última actualización: 15/10/2025 21:51</small>
+            <div class="var-container">
+                <div class="var-met">
+                    <h3 class="tit-var-met">Temperatura</h3>
+                    <h2 class="val-var-met">21.5°C</h2>
+                </div>
+                <div class="var-met">
+                    <h3 class="tit-var-met">Humedad relativa</h3>
+                    <h2 class="val-var-met">75%</h2>
+                </div>
+                <div class="var-met">
+                    <h3 class="tit-var-met">Presión atmosférica</h3>
+                    <h2 class="val-var-met">1010.4 hPa</h2>
+                </div>
+                <div class="var-met">
+                    <h3 class="tit-var-met">Dirección del viento</h3>
+                    <h2 class="val-var-met">NE</h2>
+                </div>
+                <div class="var-met">
+                    <h3 class="tit-var-met">Velocidad del viento</h3>
+                    <h2 class="val-var-met">15.4 km/h</h3>
+                </div>
+                <div class="var-met">
+                    <h3 class="tit-var-met">Precipitación acumulada</h3>
+                    <h2 class="val-var-met">0.0 mm</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="ubicacion-ema">
+            <h1>Ubicación</h1>
+            <p class="txt-ubicacion">La estación meteorológica se encuentra actualmente en la Universidad Nacional de La Matanza,
+                ya que fue desarrollada por alumnos de la carrera de Ingeniería Electrónica.
+            </p>
+            <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6920.56339250896!2d-58.569716462399235!3d-34.66937470766174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc62cc3ef7083%3A0x8867107f425fade5!2sUniversidad%20Nacional%20de%20La%20Matanza!5e1!3m2!1ses!2sar!4v1760581475649!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Seguinos en nuestras redes: </p>
+        <div class="redes">
+            <a href="https://www.instagram.com/">
+                <i class="fa-brands fa-instagram fa-3x"></i>
+            </a>
+            <a href="https://www.facebook.com/es-419/">
+                <i class="fa-brands fa-facebook fa-3x"></i>
+            </a>
+            <a href="#">
+                <i class="fa-brands fa-whatsapp fa-3x"></i>
+            </a>
+            <a href="https://www.linkedin.com/">
+                <i class="fa-brands fa-linkedin fa-3x"></i>
+            </a>
+        </div>
+        <p class="disclaimer">
+            La estación meteorológica todavía se encuentra en fase de pruebas y los datos pueden no ser muy precisos. La empresa no se responsabiliza por el uso incorrecto de los datos meteorológicos
+            provistos por el dispositivo.
+        </p>
+        <p class="copyright">
+            Copyright 2025. Todos los derechos reservados.
+        </p>
+    </footer>
+</body>
+</html>

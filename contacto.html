@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - GarWeather</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- Agregamos la imagen dentro de un bloque div genérico para tener mayor control -->
+        <div class="logo-container">
+            <img class="logo-img" src="img/logo_ema.png" alt="logo del sitio">
+        </div>
+        <!-- Barra superior de la página web-->
+        <nav>
+            <ul class="lista-enlaces">
+                <li>
+                    <a class="link" href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a class="link" href="datos.html">Datos</a>
+                </li>
+                <li>
+                    <a class="link" href="nosotros.html">Quiénes somos</a>
+                </li>
+                <li>
+                    <a class="link" href="contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contacto">
+            <h1 class="tit-contacto">Nos interesa conocer su opinión</h1>
+            <p class="text-contacto">Póngase en contacto con nosotros y recibirá una respuesta en breve. Puede enviarnos
+                un correo electrónico o seguirnos a través de nuestras redes sociales.
+            </p>
+            <!-- Formulario de contacto (lo metemos dentro de un div) -->
+            <div class="form-container">
+                <form class="formulario" action="https://formspree.io/f/mnnglrry" method="post">
+                    <!-- Definimos las entradas del formulario -->
+                    <label for="nombre">Nombre y apellido:</label> <br>
+                    <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required> <br>
+                    <label for="mail">Dirección de correo electrónico:</label> <br>
+                    <input type="email" name="mail" id="mail" placeholder="Ingrese su mail" required> <br>
+                    <label for="mensaje">Mensaje:</label> <br>
+                    <textarea name="mensaje" id="mensaje" placeholder="Escriba aquí su mensaje" required></textarea> <br>
+                    <button class="bot-enviar">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Seguinos en nuestras redes: </p>
+        <div class="redes">
+            <a href="https://www.instagram.com/">
+                <i class="fa-brands fa-instagram fa-3x"></i>
+            </a>
+            <a href="https://www.facebook.com/es-419/">
+                <i class="fa-brands fa-facebook fa-3x"></i>
+            </a>
+            <a href="#">
+                <i class="fa-brands fa-whatsapp fa-3x"></i>
+            </a>
+            <a href="https://www.linkedin.com/">
+                <i class="fa-brands fa-linkedin fa-3x"></i>
+            </a>
+        </div>
+        <p class="disclaimer">
+            La estación meteorológica todavía se encuentra en fase de pruebas y los datos pueden no ser muy precisos. La empresa no se responsabiliza por el uso incorrecto de los datos meteorológicos
+            provistos por el dispositivo.
+        </p>
+        <p class="copyright">
+            Copyright 2025. Todos los derechos reservados.
+        </p>
+    </footer>
+</body>
+</html>

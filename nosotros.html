@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nosotros</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- Agregamos la imagen dentro de un bloque div genérico para tener mayor control -->
+        <div class="logo-container">
+            <img class="logo-img" src="img/logo_ema.png" alt="logo del sitio">
+        </div>
+        <!-- Barra superior de la página web-->
+        <nav>
+            <ul class="lista-enlaces">
+                <li>
+                    <a class="link" href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a class="link" href="datos.html">Datos</a>
+                </li>
+                <li>
+                    <a class="link" href="nosotros.html">Quiénes somos</a>
+                </li>
+                <li>
+                    <a class="link" href="contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="nosotros">
+            <div class="acerca-container">
+                <div class="acerca-text">
+                    <h1>Acerca de nosotros</h1>
+                    <p>Somos un grupo de Ingenieros Electrónicos recibidos en la Universidad Nacional de La Matanza y decidimos ofrecer una solución innovadora
+                        para aquellos que desean realizar mediciones meteorológicas, incluso en lugares remotos. Para ello pusimos en práctica nuestros conocimientos
+                        sobre programación y electrónica y trabajamos arduamente en equipo durante mucho tiempo para llegar al producto final.
+                    </p>
+                    <p>
+                        Realizamos este proyecto para la cátedra de Tecnología Electrónica y lo expusimos en la ExpoProyecto de 2023. Allí el público fue testigo de 
+                        la robustez de nuestro producto, y quedó fascinado por el buen desempeño y la facilidad de lectura de los datos. Por esto nuestro proyecto
+                        fue distinguido como el mejor proyecto de la carrera de Ingeniería Electrónica.
+                    </p>     
+                </div>
+                <div class="acerca-img">
+                    <img class="img-nosotros" src="img/imagen_nosotros.jpg"> 
+                </div>
+            </div>
+        </section>
+        <section id="como-funciona">
+            <h1>¿Cómo funciona?</h1>
+            <p>
+                GarWeather es una estación meteorológica automática moderna y robusta, pensada para realizar mediciones en ambientes exigentes. Cuenta con conectividad
+                inalámbrica y una interfaz de usuario accesible para que los datos estén disponibles en cualquier dispositivo y a cualquier hora. La estación consta de 
+                dos módulos funcionales: un transmisor y un receptor.
+            </p>
+            <ul class="modulos">
+                <li>
+                    <strong>Módulo transmisor:</strong> 
+                        Se encarga de adquirir datos de los sensores meteorológicos, procesarlos y transmitirlos vía LoRa, el cual es un protocolo de comunicación inalámbrica
+                        de gran alcance. Funciona en la intemperie y es alimentado por un panel solar, lo que garantiza su funcionamiento sin necesidad de estar conectado a la
+                        red eléctrica.
+                </li>
+                <li>
+                    <strong>Módulo receptor:</strong>
+                        Recibe los datos del módulo transmisor y se conecta a una red WiFi local para subirlos a un servidor web. De esta manera, los datos pueden ser accedidos
+                        por cualquier usuario desde cualquier dispositivo. Se alimenta con una batería de iones de litio, la cual debe cargarse periódicamente.
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Seguinos en nuestras redes: </p>
+        <div class="redes">
+            <a href="https://www.instagram.com/">
+                <i class="fa-brands fa-instagram fa-3x"></i>
+            </a>
+            <a href="https://www.facebook.com/es-419/">
+                <i class="fa-brands fa-facebook fa-3x"></i>
+            </a>
+            <a href="#">
+                <i class="fa-brands fa-whatsapp fa-3x"></i>
+            </a>
+            <a href="https://www.linkedin.com/">
+                <i class="fa-brands fa-linkedin fa-3x"></i>
+            </a>
+        </div>
+        <p class="disclaimer">
+            La estación meteorológica todavía se encuentra en fase de pruebas y los datos pueden no ser muy precisos. La empresa no se responsabiliza por el uso incorrecto de los datos meteorológicos
+            provistos por el dispositivo.
+        </p>
+        <p class="copyright">
+            Copyright 2025. Todos los derechos reservados.
+        </p>
+    </footer>
+</body>
+</html>
