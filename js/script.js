@@ -10,10 +10,34 @@ socket.onopen = function() {
 
 // Método para recibir mensajes de Node-RED
 socket.onmessage = function(event) {
-    const d = new Date();
+    const d = new Date(); // Creamos un objeto para obtener la fecha y hora actuales
     console.log("Datos recibidos: " +event.data);
-    // Actualizamos el valor de la temperatura
-    document.getElementById("temp").innerHTML = event.data + "°C";
+    // Convertimos los datos recibidos en formato JSON en un objeto de JavaScript
+    const data = JSON.parse(event.data);
+    console.log(data);
+    // Actualizamos la fecha y hora actual
+    document.getElementById("ultima-act").innerHTML = d.getDate() + "/" +(d.getMonth()+1) + "/" +d.getFullYear() + " " +d.getHours() + ":" +d.getMinutes();
+    // Actualizamos el valor de las diferentes variables accediendo a cada una de las propiedades del objeto parseado
+    for(let i in data){
+        switch(i){
+            case "ema/temperatura":
+                document.getElementById("temp").innerHTML = data[i] + "°C";
+                break;
+            case "ema/humedad":
+                document.getElementById("hum").innerHTML = data[i] + "%";
+                break;
+            case "ema/presion":
+                document.getElementById("pres").innerHTML = data[i] + " hPa";
+                break;
+            case "ema/viento/velocidad":
+                document.getElementById("velv").innerHTML = data[i] + " km/h";
+                break;
+            case "ema/lluvia":
+                document.getElementById("precip").innerHTML = data[i] + " mm";
+                break;
+        }
+    }
+
 };
 
 // Método que se ejecuta al cerrar la conexión
