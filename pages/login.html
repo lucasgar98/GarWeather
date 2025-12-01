@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    
+    <main>
+        <!-- Agregamos el logo de la página por encima del formulario -->
+        <section>
+            <div id="img-login-container">
+                <img id="img-login" src="../img/logo_ema.png" alt="logo del sitio">
+            </div>
+            <div id="txt-login">
+                <h2>Iniciar sesión</h2>
+            </div>
+            <div id="error">
+                <div id="login-error">
+                Error al iniciar sesión:
+                </div>
+            </div>
+            <!-- Insertamos el formulario para iniciar sesión -->
+            <div id="form-login-cont">
+                <form id="form-login" novalidate>
+                    <!-- Definimos las entradas del formulario-->
+                    <!-- <label for="usuario">Usuario:</label> -->
+                    <input type="text" id="usuario" placeholder="Nombre de usuario"> <br>
+                    <!-- <label for="contraseña">Contraseña:</label> -->
+                    <input type="password" id="contraseña" placeholder="Contraseña"> <br>
+                    <button type="button" id="but-login">Acceder</button> <br>
+                    <div id="cont-forg-pass">
+                        <a id="forgotten-pass" href="">¿Olvidó su contraseña?</a>
+                    </div>
+                </form>
+            </div>
+            <div id="signup-cont">
+                <h3 class="txt-signup">Registrarse como usuario</h3>
+                <p class="txt-signup">Debe crearse una cuenta para acceder a ciertas secciones de la página.</p>
+                <button type="button" id="but-signup">Crear nueva cuenta</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>
