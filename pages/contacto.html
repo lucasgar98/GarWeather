@@ -20,13 +20,16 @@
                     <a class="link" href="../index.html">Inicio</a>
                 </li>
                 <li>
-                    <a class="link" href="datos.html">Datos</a>
+                    <a class="link" id="datos-link" href="#">Datos</a>
                 </li>
                 <li>
                     <a class="link" href="nosotros.html">Quiénes somos</a>
                 </li>
                 <li>
                     <a class="link" href="contacto.html">Contacto</a>
+                </li>
+                <li id="login-item">
+                    <a class="link" id="login-link" href="login.html">Iniciar sesión</a>
                 </li>
             </ul>
         </nav>
@@ -38,9 +41,14 @@
             <p class="text-contacto">Póngase en contacto con nosotros y recibirá una respuesta en breve. Puede enviarnos
                 un correo electrónico o seguirnos a través de nuestras redes sociales.
             </p>
+            <div id="error-container">
+                <div id="form-error">
+                Error al iniciar sesión:
+                </div>
+            </div>
             <!-- Formulario de contacto (lo metemos dentro de un div) -->
             <div class="form-container">
-                <form class="formulario" action="https://formspree.io/f/mnnglrry" method="post">
+                <form class="formulario" id="form-contacto" action="https://formspree.io/f/mnnglrry" method="post" novalidate>
                     <!-- Definimos las entradas del formulario -->
                     <label for="nombre">Nombre y apellido:</label> <br>
                     <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required> <br>
@@ -78,5 +86,7 @@
             Copyright 2025. Todos los derechos reservados.
         </p>
     </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
