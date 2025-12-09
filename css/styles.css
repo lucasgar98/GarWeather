@@ -230,6 +230,11 @@ footer {
 }
 
 /* ======== ESTILOS DE DATOS.HTML ======== */
+/* Ícono de usuario */
+.fa-solid {
+    margin-left: 32px;
+}
+
 /* Título "Últimos datos" */
 .tit-datos {
     margin-bottom: 2%;
@@ -257,6 +262,7 @@ footer {
     font-family: 'Figtree', sans-serif;
     font-size: 14px;
     text-align: center; /* Texto alineado al centro */
+    margin-bottom: 1rem;
 }
 
 /* Celdas de la tabla */
@@ -278,6 +284,22 @@ td {
     margin-bottom: 1.5rem;
 }
 
+#error-container {
+    display: flex;
+    justify-content: center;
+}
+
+#form-error {
+    display: none;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(248, 206, 206);
+    width: 60%;
+    border-radius: 0.5rem;
+    padding: 1%;
+    margin-bottom: 12px;
+}
+
 /* Contenedor del formulario */
 .form-container {
     text-align: center;
@@ -286,6 +308,7 @@ td {
 
 /* Formulario */
 .formulario {
+    padding-top: 12px;
     background-color: rgb(214, 226, 241);
     font-size: 18px;
     border-radius: 24px;
@@ -297,11 +320,13 @@ td {
 input[type="text"], input[type="email"] {
     color: rgb(50, 50, 50);
     width: 50%; /* Ancho del 50% */
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     margin: 16px;
     border: 1px solid rgb(23, 63, 113); /* Borde sólido de 1 px */
-    border-radius: 4px;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Public Sans' sans-serif;
 }
 
 /* Área de texto (campo de mensaje) */
@@ -316,7 +341,7 @@ textarea {
     margin-top: 16px;  /* Margen superior */
     border: 1px solid rgb(23, 63, 113);
     border-radius: 8px;
-    padding: 4px;
+    padding: 8px;
     font-family: 'Public Sans', sans-serif;
 }
 
@@ -519,7 +544,7 @@ que se reduzca el tamaño de los campos del formulario cuando el ancho es menor 
     }
 
     /* Modificamos el tamaño de los campos de texto del formulario */
-    .formulario {
+    .formulario, #form-error {
         width: 90%;
     }
 
