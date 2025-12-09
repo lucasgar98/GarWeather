@@ -3,6 +3,25 @@
 const usrVal = "lucasgar98";
 const passVal = "REINAquerida2025";
 
+// Función que muestra un mensaje de error encima del formulario
+function mostrarError(message){
+    // Accedemos al contenedor que se encuentra por encima del formulario
+    let errorElement = document.getElementById("login-error");
+    errorElement.textContent = "Error al iniciar sesión: ";
+    errorElement.textContent += message;
+    //console.log(message);
+    // Modificamos la propiedad display para mostrar el mensaje de error
+    errorElement.style.display = "flex";
+}
+
+// Función que oculta el mensaje de error si las credenciales son válidas
+function ocultarError() {
+    let errorElement = document.getElementById("login-error");
+    //console.log("Usuario y contraseña válidos");
+    // Modificamos la propiedad display para ocultar el mensaje de error
+    errorElement.style.display = "none";
+}
+
 // Función para validar los datos ingresados por el usuario al iniciar sesión
 function validarLogin() {
     // Obtenemos los valores ingresados por el usuario al iniciar sesión
@@ -41,29 +60,11 @@ function validarLogin() {
     return esValido;
 }
 
-// Función que muestra un mensaje de error encima del formulario
-function mostrarError(message){
-    // Accedemos al contenedor que se encuentra por encima del formulario
-    let errorElement = document.getElementById("login-error");
-    errorElement.textContent = "Error al iniciar sesión: ";
-    errorElement.textContent += message;
-    //console.log(message);
-    // Modificamos la propiedad display para mostrar el mensaje de error
-    errorElement.style.display = "flex";
-}
-
-// Función que oculta el mensaje de error si las credenciales son válidas
-function ocultarError() {
-    let errorElement = document.getElementById("login-error");
-    //console.log("Usuario y contraseña válidos");
-    // Modificamos la propiedad display para ocultar el mensaje de error
-    errorElement.style.display = "none";
-}
-
 // Mostramos el mensaje por encima del formulario de inicio de sesión 
 const msgLogin = sessionStorage.getItem("msgLogin");
 if(msgLogin) {
-    document.getElementById("txt-login").textContent = msgLogin;
+    let txtLogin = document.getElementById("txt-login");
+    txtLogin.innerHTML = `<h2>${msgLogin}</h2> `;
     // Borramos el mensaje para que no reaparezca
     sessionStorage.removeItem("msgLogin");
 }
@@ -75,17 +76,23 @@ btnAcceder.addEventListener("click", function(event) {
     event.preventDefault(); // Evitamos que el documento HTML maneje el evento por defecto
     //console.log("Botón Acceder presionado");
     if(validarLogin()){
-        // Obtenemos la página de origen y la página de destino
-        const origen = sessionStorage.getItem("origen");
+        // Obtenemos la página de destino
+        //const origen = sessionStorage.getItem("origen");
         const destino = sessionStorage.getItem("destino");
-        // Definimos la página que se abrirá al presionar el botón acceder, según la página de origen
-        if(origen == "index.html"){
-            if(destino == "datos.html"){
-                window.location.href = "../pages/datos.html";
-            } else {
-                window.location.href = "../index.html";
-            }
+        // Definimos la página que se abrirá al presionar el botón acceder, según la página de destino
+        if(destino == "datos.html"){
+            window.location.href = "../pages/datos.html";
         }
+        else if(destino == "index.html"){
+            window.location.href = "../index.html";
+        }
+        else if(destino == "contacto.html"){
+            window.location.href = "../pages/contacto.html";
+        }
+        else if(destino == "nosotros.html"){
+            window.location.href = "../pages/nosotros.html";
+        }
+        
         sessionStorage.setItem("sesionIniciada", "true");
     }
 });
