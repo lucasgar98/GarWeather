@@ -14,8 +14,8 @@
             <img class="logo-img" src="../img/logo_ema.png" alt="logo del sitio">
         </div>
         <!-- Barra superior de la página web-->
-        <nav>
-            <ul class="lista-enlaces">
+        <nav class="navbar" id="nav-bar">
+            <ul class="lista-enlaces" id="list-enlaces">
                 <li>
                     <a class="link" href="../index.html">Inicio</a>
                 </li>
@@ -32,6 +32,21 @@
                     <a class="link" id="login-link" href="login.html">Iniciar sesión</a>
                 </li>
             </ul>
+            <button type="button" class="menu-hamburguesa" id="boton-hamburguesa">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <!-- Menú desplegable que se abre al hacer clic en el ícono de usuario -->
+            <div class="usuario-container" id="usr-container">
+                <button class="boton-usuario" id="bot-usuario">
+                    <i class="fa-solid fa-user" id="icono-usuario"></i>
+                </button>
+                <ul class="usuario-menu" id="user-menu">
+                    <li id="user-name">Lucasgar98</li>
+                    <li><a class="link" href="#perfil">Mi perfil</a></li>
+                    <li><a class="link" href="#configuracion">Configuración</a></li>
+                    <li><a class="link" href="#logout">Cerrar sesión</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
