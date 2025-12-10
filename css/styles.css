@@ -88,14 +88,23 @@ footer {
     height: 60px; /* Altura de la imagen */
 }
 
-/* Lista de enlaces de la barra superior */
-.lista-enlaces {
+.navbar {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    font-family: 'Figtree', sans-serif;
+    justify-content: space-between;
     padding-right: 2rem;
     padding-left: 2rem;
+}
+
+/* Lista de enlaces de la barra superior */
+.lista-enlaces {
+    /* display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+    padding-right: 2rem;
+    padding-left: 2rem; */
+    display: flex;
+    font-family: 'Figtree', sans-serif;
 }
 
 /* Elementos de la lista de enlaces */
@@ -103,9 +112,60 @@ footer {
     color: rgb(99, 99, 99);
     font-weight: bold;
     display: flex;
-    justify-content: space-between;
     margin-left: 2rem;
+}
+
+.menu-hamburguesa {
+    display: none;
+    background: none;
+    border: none;
+    color: rgb(99, 99, 99);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.usuario-container {
+    position: relative;
+    display: none;
+}
+
+.boton-usuario {
+    background: none;
+    border: none;
+    color: rgb(99, 99, 99);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Menú desplegable (oculto por defecto) */
+.usuario-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgb(191, 247, 247);
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 160px;
+    display: none;
+    flex-direction: column;
     align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    gap: 20px;
+    font-family: 'Figtree', sans-serif;
+}
+
+.usuario-menu li a {
+    display: block;
+    margin: 0;
+}
+
+/* .usuario-menu li a:hover {
+    background-color: rgb(160, 245, 245);
+} */
+
+.usuario-menu.active {
+    display: flex;
 }
 
 /* ========= ESTILOS DEL MAIN ========= */
@@ -563,28 +623,57 @@ que se reduzca el tamaño de los campos del formulario cuando el ancho es menor 
 de datos actuales se muestren uno debajo del otro cuando el ancho es menor a 700 px */
 @media screen and (max-width: 700px) {
     /* Convertimos al header en una columna en pantallas pequeñas */
-    header {
+    /*header {
         flex-direction: column; /* Pone el logo arriba y los enlaces abajo */
-        align-items: center;
+        /*align-items: center;
         justify-content: center;
-    }
+    } */
+
+    /* #menu-hamburguesa {
+        display: flex;
+    } */
 
     .lista-enlaces {
+        display: none;
         flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1rem;
+        align-items: center;
+        background-color: rgb(191, 247, 247);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 150px;
+        padding: 10px 5px;
+        border-radius: 8px;
+        gap: 20px;
+        z-index: 1;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+        /* gap: 0.5rem;
+        margin-top: 1rem; */
     }
 
     .link {
-        height: 2.5rem; /* Altura de los contenedores de los enlaces */
         margin: 0;
     }
+
+    .menu-hamburguesa {
+        display: block;
+    }
+
+    .lista-enlaces.active {
+        display: flex;
+    }
+
+    #icon-container {
+        padding-right: 25px;
+        padding-bottom: 5px;
+    }
+
     /* Centramos el logo dentro del contenedor */
-    .logo-container {
+    /* .logo-container {
         justify-content: center; 
         width: 100%;
         margin: 0;
-    }
+    } */
 
     /* Ubicamos los contenedores de los datos actuales uno debajo del otro */
     .var-container {
