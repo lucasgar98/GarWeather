@@ -98,3 +98,39 @@ fetch("https://api.thingspeak.com/channels/2317526/feeds.json?api_key=VL73GBXA69
         sessionStorage.setItem("dirv", obtenerDirViento(data.feeds[9].field7));
         sessionStorage.setItem("precip", parseFloat(data.feeds[9].field8).toFixed(1));
     });
+
+if(sessionStorage.getItem("sesionIniciada") == "true"){
+    // Mostramos el ícono de usuario
+    document.getElementById("usr-container").style.display = "block";
+
+    const usrName = document.getElementById("user-name");
+    usrName.textContent = "lucasgar98";
+    usrName.style = "font-weight: 800; font-size: 22px; font-family: 'Public Sans';";
+}
+
+//---------- MENÚ HAMBURGUESA -----------
+const btnHamburguesa = document.getElementById("boton-hamburguesa");
+const listEnlaces = document.getElementById("list-enlaces");
+
+btnHamburguesa.addEventListener("click", function() {
+    console.log("Click sobre el menú hamburguesa");
+    listEnlaces.classList.toggle("active");
+});
+
+//---------- MENÚ DE USUARIO -----------
+const btnUsuario = document.getElementById("bot-usuario");
+const menuUsuario = document.getElementById("user-menu");
+
+btnUsuario.addEventListener("click", function() {
+    menuUsuario.classList.toggle("active");
+});
+
+document.addEventListener("click", (event) => {
+    if (!menuUsuario.contains(event.target) && !btnUsuario.contains(event.target)) {
+        menuUsuario.classList.remove("active");
+    }
+    
+    if(!listEnlaces.contains(event.target) && !btnHamburguesa.contains(event.target)){
+        listEnlaces.classList.remove("active");
+    }
+});

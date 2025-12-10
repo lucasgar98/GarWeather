@@ -62,9 +62,7 @@ fetch("https://api.thingspeak.com/channels/2317526/feeds.json?api_key=VL73GBXA69
     .then(data => {
         const element = data.feeds[0];
         // Actualizamos la fecha y hora actuales
-        //document.getElementById("ultima-act").textContent = sessionStorage.getItem("date-time");
         document.getElementById("ultima-act").textContent = parseDateTime(element.created_at);
-        //console.log(data.feeds[0].created_at);
         // Actualizamos los valores de las diferentes variables
         document.getElementById("temp").textContent = parseFloat(element.field1).toFixed(1) + "°C";
         document.getElementById("hum").textContent = parseFloat(element.field2).toFixed(1) + "%";
@@ -121,7 +119,6 @@ linkDatos.addEventListener("click", function() {
     defPaginaOrigen();
     // Verificamos si se inició sesión
     const sesionIniciada = sessionStorage.getItem("sesionIniciada");
-    //console.log(sesionIniciada);
     if(sesionIniciada == "true"){
         // Redirigimos a datos.html en caso que se haya iniciado sesión
         if(sessionStorage.getItem("origen") == "index.html"){
@@ -133,7 +130,6 @@ linkDatos.addEventListener("click", function() {
     else if(sesionIniciada == "false" || sesionIniciada == null) {
         // Definimos la página de destino
         defPaginaDestino(linkClicked);
-        //sessionStorage.setItem("destino", "datos.html");
         // Guardamos localmente el mensaje que vamos a mostrar por encima del formulario
         sessionStorage.setItem("msgLogin", "Para acceder a la sección de datos, debe iniciar sesión");
         // Redirigimos a login.html (página de inicio de sesión)
@@ -159,11 +155,13 @@ linkLogin.addEventListener("click", function(){
 
 if(sessionStorage.getItem("sesionIniciada") == "true"){
     // Eliminamos el enlace para iniciar sesión y lo reemplazamos por un ícono junto al nombre de usuario
-    document.getElementById("login-link").remove();
-    let usrIcon = document.createElement("i");
-    usrIcon.className = "fa-solid fa-user";
-    usrIcon.style.marginLeft = "32px";
-    document.getElementById("login-item").appendChild(usrIcon);
+    document.getElementById("login-item").style.display = "none";
+    // Mostramos el ícono de usuario
+    document.getElementById("usr-container").style.display = "block";
+
+    const usrName = document.getElementById("user-name");
+    usrName.textContent = "lucasgar98";
+    usrName.style = "font-weight: 800; font-size: 22px; font-family: 'Public Sans';";
 }
 
 //---------- VALIDACIÓN DE FORMULARIO DE CONTACTO -----------
@@ -173,7 +171,6 @@ function mostrarError(message){
     let errorElement = document.getElementById("form-error");
     errorElement.textContent = "Error: ";
     errorElement.textContent += message;
-    //console.log(message);
     // Modificamos la propiedad display para mostrar el mensaje de error
     errorElement.style.display = "flex";
 }
@@ -252,8 +249,44 @@ function validarForm(){
     return esValido;
 }
 
+//---------- MENÚ HAMBURGUESA -----------
+const btnHamburguesa = document.getElementById("boton-hamburguesa");
+const listEnlaces = document.getElementById("list-enlaces");
+
+btnHamburguesa.addEventListener("click", function() {
+    console.log("Click sobre el menú hamburguesa");
+    listEnlaces.classList.toggle("active");
+});
+
+//---------- MENÚ DE USUARIO -----------
+const btnUsuario = document.getElementById("bot-usuario");
+const menuUsuario = document.getElementById("user-menu");
+
+btnUsuario.addEventListener("click", function() {
+    menuUsuario.classList.toggle("active");
+});
+
+document.addEventListener("click", (event) => {
+    if (!menuUsuario.contains(event.target) && !btnUsuario.contains(event.target)) {
+        menuUsuario.classList.remove("active");
+    }
+    
+    if(!listEnlaces.contains(event.target) && !btnHamburguesa.contains(event.target)){
+        listEnlaces.classList.remove("active");
+    }
+});
+
+const btnLogout = document.getElementById("logout-link");
+btnLogout.addEventListener("click", function() {
+    sessionStorage.setItem("sesionIniciada", "false");
+    // Ocultamos el contenedor del ícono de usuario al cerrar sesión
+    document.getElementById("usr-container").style.display = "none";
+    // Mostramos la opción de inicio de sesión
+    document.getElementById("login-item").style.display = "block";
+})
+
 /* Definimos un evento que se dispara cada vez que se envía el formulario */
-let formContacto = document.getElementById("form-contacto");
+const formContacto = document.getElementById("form-contacto");
 formContacto.addEventListener("submit", function(event) {
     event.preventDefault();
     if(validarForm() == false){
