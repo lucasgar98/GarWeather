@@ -4,38 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
+    <!-- Hoja de estilos -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     
     <main>
-        <!-- Agregamos el logo de la página por encima del formulario -->
         <section>
-            <div id="img-login-container">
-                <img id="img-login" src="../img/logo_ema.png" alt="logo del sitio">
+            <!-- Agregamos el logo de la página por encima del formulario -->
+            <div class="img-signup-login-container">
+                <img class="img-signup-login" src="../img/logo_ema.png" alt="logo del sitio">
             </div>
-            <div id="txt-login">
+            <div class="txt-signup-login" id="txt-login">
                 <h2>Iniciar sesión</h2>
             </div>
-            <div id="error">
+            <!-- Mensaje de error (oculto por defecto) -->
+            <div id="error-cont">
                 <div id="login-error">
                 Error al iniciar sesión:
                 </div>
             </div>
             <!-- Insertamos el formulario para iniciar sesión -->
-            <div id="form-login-cont">
-                <form id="form-login" novalidate>
-                    <!-- Definimos las entradas del formulario-->
-                    <!-- <label for="usuario">Usuario:</label> -->
-                    <input type="text" id="usuario" placeholder="Nombre de usuario"> <br>
-                    <!-- <label for="contraseña">Contraseña:</label> -->
-                    <input type="password" id="contraseña" placeholder="Contraseña"> <br>
-                    <button type="button" id="but-login">Acceder</button> <br>
-                    <div id="cont-forg-pass">
-                        <a id="forgotten-pass" href="">¿Olvidó su contraseña?</a>
-                    </div>
-                </form>
-            </div>
+            <form class="form-signup-login" novalidate>
+                <!-- Definimos las entradas del formulario-->
+                <!-- <label for="usuario">Usuario:</label> -->
+                <input type="text" class="form-fields" id="usuario" placeholder="Nombre de usuario"> <br>
+                <!-- <label for="contraseña">Contraseña:</label> -->
+                <input type="password" class="form-fields" id="contraseña" placeholder="Contraseña"> <br>
+                <button type="button" class="but-form" id="but-login">Acceder</button> <br>
+            </form>
             <div id="signup-cont">
                 <h3 class="txt-signup">Registrarse como usuario</h3>
                 <p class="txt-signup">Debe crearse una cuenta para acceder a ciertas secciones de la página.</p>
@@ -43,7 +40,7 @@
             </div>
         </section>
     </main>
-
+    <!-- Script -->
     <script src="../js/login.js"></script>
 </body>
 </html>
