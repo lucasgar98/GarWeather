@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - GarWeather</title>
+    <!-- Hoja de estilos -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
@@ -32,6 +33,7 @@
                     <a class="link" id="login-link" href="login.html">Iniciar sesión</a>
                 </li>
             </ul>
+            <!-- Menú hamburguesa -->
             <button type="button" class="menu-hamburguesa" id="boton-hamburguesa">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -42,15 +44,37 @@
                 </button>
                 <ul class="usuario-menu" id="user-menu">
                     <li id="user-name">Lucasgar98</li>
-                    <li><a class="link" href="#perfil">Mi perfil</a></li>
-                    <li><a class="link" href="#configuracion">Configuración</a></li>
-                    <li><a class="link" href="#logout">Cerrar sesión</a></li>
+                    <li><a class="link" id="perfil-link" href="#perfil">Mi perfil</a></li>
+                    <li><a class="link" id="logout-link" href="#logout">Cerrar sesión</a></li>
+                </ul>
+                <ul class="user-data" id="usr-data">
+                    <li>
+                        <h4>Nombre de usuario:</h4>
+                        <p id="nombre-usuario"></p>
+                    </li>
+                    <li>
+                        <h4>Nombre:</h4>
+                        <p id="nombre"></p>
+                    </li>
+                    <li>
+                        <h4>Apellido:</h4>
+                        <p id="apellido"></p>
+                    </li>
+                    <li>
+                        <h4>Dirección de correo electrónico:</h4>
+                        <p id="email"></p>
+                    </li>
+                    <li>
+                        <h4>Profesión:</h4>
+                        <p id="profesion"></p>
+                    </li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- Sección de contacto -->
         <section class="contacto">
             <h1 class="tit-contacto">Nos interesa conocer su opinión</h1>
             <p class="text-contacto">Póngase en contacto con nosotros y recibirá una respuesta en breve. Puede enviarnos
@@ -61,23 +85,22 @@
                 Error al iniciar sesión:
                 </div>
             </div>
-            <!-- Formulario de contacto (lo metemos dentro de un div) -->
-            <div class="form-container">
-                <form class="formulario" id="form-contacto" action="https://formspree.io/f/mnnglrry" method="post" novalidate>
-                    <!-- Definimos las entradas del formulario -->
-                    <label for="nombre">Nombre y apellido:</label> <br>
-                    <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required> <br>
-                    <label for="mail">Dirección de correo electrónico:</label> <br>
-                    <input type="email" name="mail" id="mail" placeholder="Ingrese su mail" required> <br>
-                    <label for="mensaje">Mensaje:</label> <br>
-                    <textarea name="mensaje" id="mensaje" placeholder="Escriba aquí su mensaje" required></textarea> <br>
-                    <button class="bot-enviar">Enviar</button>
-                </form>
-            </div>
+            <!-- Formulario de contacto -->
+            <form class="formulario" id="form-contacto" action="https://formspree.io/f/mnnglrry" method="post" novalidate>
+                <!-- Definimos las entradas del formulario -->
+                <label for="nombre">Nombre y apellido:</label> <br>
+                <input type="text" class="form-fields" id="campo-nombre" placeholder="Ingrese su nombre" required> <br>
+                <label for="mail">Dirección de correo electrónico:</label> <br>
+                <input type="email" class="form-fields" id="campo-mail" placeholder="Ingrese su email" required> <br>
+                <label for="mensaje">Mensaje:</label> <br>
+                <textarea name="mensaje" id="campo-mensaje" placeholder="Escriba aquí su mensaje" required></textarea> <br>
+                <button class="bot-enviar">Enviar</button>
+            </form>
         </section>
     </main>
 
     <footer>
+        <!-- Redes sociales -->
         <p class="txt-redes">Seguinos en nuestras redes: </p>
         <div class="redes">
             <a href="https://www.instagram.com/">
@@ -93,15 +116,17 @@
                 <i class="fa-brands fa-linkedin fa-3x"></i>
             </a>
         </div>
+        <!-- Descargo de responsabilidad (disclaimer) -->
         <p class="disclaimer">
             La estación meteorológica todavía se encuentra en fase de pruebas y los datos pueden no ser muy precisos. La empresa no se responsabiliza por el uso incorrecto de los datos meteorológicos
             provistos por el dispositivo.
         </p>
+        <!-- Copyright -->
         <p class="copyright">
             Copyright 2025. Todos los derechos reservados.
         </p>
     </footer>
-
+    <!-- Script -->
     <script src="../js/script.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estación meteorológica automática - GarWeather</title>
+    <!-- Hoja de estilos-->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
@@ -15,7 +16,6 @@
         </div>
         <!-- Barra superior de la página web-->
         <nav class="navbar" id="nav-bar">
-            <!-- <span id="menu-hamburguesa" onclick="openMenu()">&#9776</span> -->
             <!-- Lista de enlaces de la barra superior -->
             <ul class="lista-enlaces" id="list-enlaces">
                 <li>
@@ -45,15 +45,37 @@
                 </button>
                 <ul class="usuario-menu" id="user-menu">
                     <li id="user-name">Lucasgar98</li>
-                    <li><a class="link" href="#perfil">Mi perfil</a></li>
-                    <li><a class="link" href="#configuracion">Configuración</a></li>
+                    <li><a class="link" id="perfil-link" href="#perfil">Mi perfil</a></li>
                     <li><a class="link" id="logout-link" href="#logout">Cerrar sesión</a></li>
+                </ul>
+                <ul class="user-data" id="usr-data">
+                    <li>
+                        <h4>Nombre de usuario:</h4>
+                        <p id="nombre-usuario"></p>
+                    </li>
+                    <li>
+                        <h4>Nombre:</h4>
+                        <p id="nombre"></p>
+                    </li>
+                    <li>
+                        <h4>Apellido:</h4>
+                        <p id="apellido"></p>
+                    </li>
+                    <li>
+                        <h4>Dirección de correo electrónico:</h4>
+                        <p id="email"></p>
+                    </li>
+                    <li>
+                        <h4>Profesión:</h4>
+                        <p id="profesion"></p>
+                    </li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- Sección de bienvenida -->
         <section class="bienvenida">
             <h1>Estación meteorológica GarWeather</h1>
             <p class="txt-bienvenida">Bienvenidos a GarWeather, una estación meteorológica automática moderna para uso doméstico que satisface las necesidades actuales de los usuarios.</p>
@@ -61,7 +83,7 @@
                 <img class="ema-img" src="img/ema_tripode.jpeg" alt="imagen de la EMA">
             </div>
         </section>
-
+        <!-- Sección de datos actuales -->
         <section class="datos-actuales">
             <h1>Datos actuales</h1>
             <small>Última actualización:</small>
@@ -93,7 +115,7 @@
                 </div>
             </div>
         </section>
-
+        <!-- Sección de ubicación de la EMA (la cual contiene un mapa)-->
         <section class="ubicacion-ema">
             <h1>Ubicación</h1>
             <p class="txt-ubicacion">La estación meteorológica se encuentra actualmente en la Universidad Nacional de La Matanza,
@@ -104,8 +126,9 @@
             </div>
         </section>
     </main>
-
+    
     <footer>
+        <!-- Redes sociales -->
         <p class="txt-redes">Seguinos en nuestras redes: </p>
         <div class="redes">
             <a href="https://www.instagram.com/">
@@ -121,15 +144,17 @@
                 <i class="fa-brands fa-linkedin fa-3x"></i>
             </a>
         </div>
+        <!-- Descargo de responsabilidad (disclaimer) -->
         <p class="disclaimer">
             La estación meteorológica todavía se encuentra en fase de pruebas y los datos pueden no ser muy precisos. La empresa no se responsabiliza por el uso incorrecto de los datos meteorológicos
             provistos por el dispositivo.
         </p>
+        <!-- Copyright -->
         <p class="copyright">
             Copyright 2025. Todos los derechos reservados.
         </p>
     </footer>
-
+    <!-- Script -->
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre nosotros</title>
+    <!-- Hoja de estilos -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
@@ -32,6 +33,7 @@
                     <a class="link" id="login-link" href="login.html">Iniciar sesión</a>
                 </li>
             </ul>
+            <!-- Menú hamburguesa -->
             <button type="button" class="menu-hamburguesa" id="boton-hamburguesa">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -42,15 +44,37 @@
                 </button>
                 <ul class="usuario-menu" id="user-menu">
                     <li id="user-name">Lucasgar98</li>
-                    <li><a class="link" href="#perfil">Mi perfil</a></li>
-                    <li><a class="link" href="#configuracion">Configuración</a></li>
-                    <li><a class="link" href="#logout">Cerrar sesión</a></li>
+                    <li><a class="link" id="perfil-link" href="#perfil">Mi perfil</a></li>
+                    <li><a class="link" id="logout-link" href="#logout">Cerrar sesión</a></li>
+                </ul>
+                <ul class="user-data" id="usr-data">
+                    <li>
+                        <h4>Nombre de usuario:</h4>
+                        <p id="nombre-usuario"></p>
+                    </li>
+                    <li>
+                        <h4>Nombre:</h4>
+                        <p id="nombre"></p>
+                    </li>
+                    <li>
+                        <h4>Apellido:</h4>
+                        <p id="apellido"></p>
+                    </li>
+                    <li>
+                        <h4>Dirección de correo electrónico:</h4>
+                        <p id="email"></p>
+                    </li>
+                    <li>
+                        <h4>Profesión:</h4>
+                        <p id="profesion"></p>
+                    </li>
                 </ul>
             </div>
         </nav>
     </header>
     
     <main>
+        <!-- Sección "Acerca de nosotros" -->
         <section id="nosotros">
             <div class="acerca-container">
                 <div class="acerca-text">
@@ -70,6 +94,7 @@
                 </div>
             </div>
         </section>
+        <!-- Sección Cómo funciona -->
         <section id="como-funciona">
             <h1>¿Cómo funciona?</h1>
             <p>
@@ -95,6 +120,7 @@
     </main>
 
     <footer>
+        <!-- Redes sociales -->
         <p class="txt-redes">Seguinos en nuestras redes: </p>
         <div class="redes">
             <a href="https://www.instagram.com/">
@@ -110,14 +136,17 @@
                 <i class="fa-brands fa-linkedin fa-3x"></i>
             </a>
         </div>
+        <!-- Descargo de responsabilidad (disclaimer) -->
         <p class="disclaimer">
             La estación meteorológica todavía se encuentra en fase de pruebas y los datos pueden no ser muy precisos. La empresa no se responsabiliza por el uso incorrecto de los datos meteorológicos
             provistos por el dispositivo.
         </p>
+        <!-- Copyright -->
         <p class="copyright">
             Copyright 2025. Todos los derechos reservados.
         </p>
     </footer>
+    <!-- Script -->
     <script src="../js/script.js"></script>
 </body>
 </html>

@@ -28,10 +28,8 @@
                 <li>
                     <a class="link" href="contacto.html">Contacto</a>
                 </li>
-                <!-- <li>
-                    <i class="fa-solid fa-user"></i>
-                </li> -->
             </ul>
+            <!-- Menú hamburguesa -->
             <button type="button" class="menu-hamburguesa" id="boton-hamburguesa">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -42,41 +40,63 @@
                 </button>
                 <ul class="usuario-menu" id="user-menu">
                     <li id="user-name">Lucasgar98</li>
-                    <li><a class="link" href="#perfil">Mi perfil</a></li>
-                    <li><a class="link" href="#configuracion">Configuración</a></li>
-                    <li><a class="link" href="#logout">Cerrar sesión</a></li>
+                    <li><a class="link" id="perfil-link" href="#perfil">Mi perfil</a></li>
+                    <li><a class="link" id="logout-link" href="#logout">Cerrar sesión</a></li>
+                </ul>
+                <ul class="user-data" id="usr-data">
+                    <li>
+                        <h4>Nombre de usuario:</h4>
+                        <p id="nombre-usuario"></p>
+                    </li>
+                    <li>
+                        <h4>Nombre:</h4>
+                        <p id="nombre"></p>
+                    </li>
+                    <li>
+                        <h4>Apellido:</h4>
+                        <p id="apellido"></p>
+                    </li>
+                    <li>
+                        <h4>Dirección de correo electrónico:</h4>
+                        <p id="email"></p>
+                    </li>
+                    <li>
+                        <h4>Profesión:</h4>
+                        <p id="profesion"></p>
+                    </li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- Sección de datos-->
         <section class="datos">
             <h1 class="tit-datos">Últimos datos</h1>
-            <p class="text-datos">En la siguiente tabla se muestran los datos de la estación meteorológica de la última hora, tomados cada 10 minutos.</p>
-            <!-- Tabla para mostrar los últimos datos (la metemos dentro de un div) -->
-            <div class="tabla-container">
-                <table class="tabla-datos" id="tabla-datos">
-                    <!-- Encabezado de la tabla -->
-                    <thead>
-                        <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Temperatura</th>
-                            <th scope="col">Humedad relativa</th>
-                            <th scope="col">Presión atmosférica</th>
-                            <th scope="col">Velocidad del viento</th>
-                            <th scope="col">Dirección del viento</th>
-                            <th scope="col">Precipitación acumulada</th>
-                        </tr>
-                    </thead>
-                    <!-- Datos de la tabla -->
-                    <tbody id="reg-tabla">
-                    </tbody>
-                </table>                
-            </div>
+            <p class="text-datos">En la siguiente tabla se muestran los últimos 10 datos tomados por la estación meteorológica, los cuales se obtienen de un servidor web.</p>
+            <!-- Tabla para mostrar los últimos datos -->
+            <table class="tabla-datos" id="tabla-datos">
+                <!-- Encabezado de la tabla -->
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Temperatura</th>
+                        <th scope="col">Humedad relativa</th>
+                        <th scope="col">Presión atmosférica</th>
+                        <th scope="col">Velocidad del viento</th>
+                        <th scope="col">Dirección del viento</th>
+                        <th scope="col">Precipitación acumulada</th>
+                    </tr>
+                </thead>
+                <!-- Datos de la tabla (se agregan dinámicamente) -->
+                <tbody id="reg-tabla">
+                </tbody>
+            </table>
         </section>
     </main>
+
     <footer>
+        <!-- Redes sociales -->
         <p class="txt-redes">Seguinos en nuestras redes: </p>
         <div class="redes">
             <a href="https://www.instagram.com/">
@@ -92,15 +112,17 @@
                 <i class="fa-brands fa-linkedin fa-3x"></i>
             </a>
         </div>
+        <!-- Descargo de responsabilidad (disclaimer) -->
         <p class="disclaimer">
             La estación meteorológica todavía se encuentra en fase de pruebas y los datos pueden no ser muy precisos. La empresa no se responsabiliza por el uso incorrecto de los datos meteorológicos
             provistos por el dispositivo.
         </p>
+        <!-- Copyright -->
         <p class="copyright">
             Copyright 2025. Todos los derechos reservados.
         </p>
     </footer>
-
-    <script src="../js/datos.js"></script>
+    <!-- Script -->
+    <script src="../js/script.js"></script>
 </body>
 </html>
