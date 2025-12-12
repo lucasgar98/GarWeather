@@ -57,20 +57,64 @@ function parseDateTime(dateTime) {
 }
 
 /* Hacemos la consulta a la API ThingSpeak para obtener los datos actuales */
-fetch("https://api.thingspeak.com/channels/2317526/feeds.json?api_key=VL73GBXA69XAZRSG&results=1")
-    .then(r => r.json())
-    .then(data => {
-        const element = data.feeds[0];
-        // Actualizamos la fecha y hora actuales
-        document.getElementById("ultima-act").textContent = parseDateTime(element.created_at);
-        // Actualizamos los valores de las diferentes variables
-        document.getElementById("temp").textContent = parseFloat(element.field1).toFixed(1) + "°C";
-        document.getElementById("hum").textContent = parseFloat(element.field2).toFixed(1) + "%";
-        document.getElementById("pres").textContent = parseFloat(element.field4).toFixed(1) + " hPa";
-        document.getElementById("dirv").textContent = obtenerDirViento(element.field7);
-        document.getElementById("velv").textContent = parseFloat(element.field5).toFixed(1) + " km/h";
-        document.getElementById("precip").textContent = parseFloat(element.field8).toFixed(1) + " mm";
-    });
+if(document.URL.includes("index.html")){
+    fetch("https://api.thingspeak.com/channels/2317526/feeds.json?api_key=VL73GBXA69XAZRSG&results=1")
+        .then(r => r.json())
+        .then(data => {
+            const element = data.feeds[0];
+            // Actualizamos la fecha y hora actuales
+            document.getElementById("ultima-act").textContent = parseDateTime(element.created_at);
+            // Actualizamos los valores de las diferentes variables
+            document.getElementById("temp").textContent = parseFloat(element.field1).toFixed(1) + "°C";
+            document.getElementById("hum").textContent = parseFloat(element.field2).toFixed(1) + "%";
+            document.getElementById("pres").textContent = parseFloat(element.field4).toFixed(1) + " hPa";
+            document.getElementById("dirv").textContent = obtenerDirViento(element.field7);
+            document.getElementById("velv").textContent = parseFloat(element.field5).toFixed(1) + " km/h";
+            document.getElementById("precip").textContent = parseFloat(element.field8).toFixed(1) + " mm";
+        });
+}
+else if(document.URL.includes("datos.html")){
+    /* Hacemos la consulta a la API ThingSpeak para obtener los últimos 10 datos y los
+    mostramos en la tabla */
+    let regTabla = document.getElementById("reg-tabla");
+    regTabla.innerHTML = "";
+    fetch("https://api.thingspeak.com/channels/2317526/feeds.json?api_key=VL73GBXA69XAZRSG&results=10")
+        .then(r => r.json())
+        .then(data => {
+            let filas = [];
+            // Recorremos todos los elementos del array y los parseamos
+            data.feeds.forEach(element => {
+                console.log(element);
+                // Creamos una fila y la llenamos con los datos obtenidos
+                let fila = document.createElement("tr");
+                fila.innerHTML = `
+                    <td>${parseDateTime(element.created_at)}</td>
+                    <td>${parseFloat(element.field1).toFixed(1)}°C</td>
+                    <td>${parseFloat(element.field2).toFixed(1)}%</td>
+                    <td>${parseFloat(element.field4).toFixed(1)} hPa</td>
+                    <td>${parseFloat(element.field5).toFixed(1)} km/h</td>
+                    <td>${obtenerDirViento(element.field7)}</td>
+                    <td>${parseFloat(element.field8).toFixed(1)} mm</td>   
+                `;
+                filas.push(fila);
+            });
+            /* Recorremos el array de filas en sentido inverso para mostrar los datos
+            en la tabla, ya que los datos leídos de ThingSpeak están ordenados de más antiguo
+            a más reciente */
+            for(let i=(filas.length-1); i>=0; i--){
+                regTabla.appendChild(filas[i]);
+            }
+            /* Guardamos los valores más recientes en sessionStorage, para poder
+            mostrarlos en la página de inicio */
+            sessionStorage.setItem("date-time", parseDateTime(data.feeds[9].created_at));
+            sessionStorage.setItem("temp", parseFloat(data.feeds[9].field1).toFixed(1));
+            sessionStorage.setItem("hum", parseFloat(data.feeds[9].field2).toFixed(1));
+            sessionStorage.setItem("pres", parseFloat(data.feeds[9].field4).toFixed(1));
+            sessionStorage.setItem("velv", parseFloat(data.feeds[9].field5).toFixed(1));
+            sessionStorage.setItem("dirv", obtenerDirViento(data.feeds[9].field7));
+            sessionStorage.setItem("precip", parseFloat(data.feeds[9].field8).toFixed(1));
+        });    
+}
 
 //---------- INICIO DE SESIÓN -----------
 function defPaginaOrigen(){
@@ -112,56 +156,123 @@ function defPaginaDestino(linkClicked){
 
 /* Definimos un evento que se dispara cuando se intenta ingresar a la sección de datos
 sin haber iniciado sesión */
-let linkDatos = document.getElementById("datos-link");
-linkDatos.addEventListener("click", function() {
-    let linkClicked = "Datos";
-    // Definimos la página de origen
-    defPaginaOrigen();
-    // Verificamos si se inició sesión
-    const sesionIniciada = sessionStorage.getItem("sesionIniciada");
-    if(sesionIniciada == "true"){
-        // Redirigimos a datos.html en caso que se haya iniciado sesión
-        if(sessionStorage.getItem("origen") == "index.html"){
-            window.location.href = "pages/datos.html";
-        } else {
-            window.location.href = "datos.html";
+if(document.URL.includes("datos.html") == false){
+    let linkDatos = document.getElementById("datos-link");
+    linkDatos.addEventListener("click", function() {
+        const linkClicked = "Datos";
+        // Definimos la página de origen
+        defPaginaOrigen();
+        // Verificamos si se inició sesión
+        const sesionIniciada = sessionStorage.getItem("sesionIniciada");
+        if(sesionIniciada == "true"){
+            // Redirigimos a datos.html en caso que se haya iniciado sesión
+            if(sessionStorage.getItem("origen") == "index.html"){
+                window.location.href = "pages/datos.html";
+            } else {
+                window.location.href = "datos.html";
+            }
         }
-    }
-    else if(sesionIniciada == "false" || sesionIniciada == null) {
+        else if(sesionIniciada == "false" || sesionIniciada == null) {
+            // Definimos la página de destino
+            defPaginaDestino(linkClicked);
+            // Guardamos localmente el mensaje que vamos a mostrar por encima del formulario
+            sessionStorage.setItem("msgLogin", "Para acceder a la sección de datos, debe iniciar sesión");
+            // Redirigimos a login.html (página de inicio de sesión)
+            if(sessionStorage.getItem("origen") == "index.html"){
+                window.location.href = "pages/login.html";
+            }
+            else {
+                window.location.href = "login.html";
+            }
+        }
+    });
+
+    /* Definimos un evento que se dispara cada vez que se presiona el enlace para
+    iniciar sesión */
+    let linkLogin = document.getElementById("login-link");
+    linkLogin.addEventListener("click", function(){
+        let linkClicked = "Iniciar sesión";
+        // Definimos la página de origen
+        defPaginaOrigen();
         // Definimos la página de destino
         defPaginaDestino(linkClicked);
-        // Guardamos localmente el mensaje que vamos a mostrar por encima del formulario
-        sessionStorage.setItem("msgLogin", "Para acceder a la sección de datos, debe iniciar sesión");
-        // Redirigimos a login.html (página de inicio de sesión)
-        if(sessionStorage.getItem("origen") == "index.html"){
-            window.location.href = "pages/login.html";
-        }
-        else {
-            window.location.href = "login.html";
-        }
-    }
-});
+    });
+}
 
-/* Definimos un evento que se dispara cada vez que se presiona el enlace para
-iniciar sesión */
-let linkLogin = document.getElementById("login-link");
-linkLogin.addEventListener("click", function(){
-    let linkClicked = "Iniciar sesión";
-    // Definimos la página de origen
-    defPaginaOrigen();
-    // Definimos la página de destino
-    defPaginaDestino(linkClicked);
-})
-
+//---------- MOSTRAR MENÚ DE USUARIO Y CERRAR SESIÓN -----------
 if(sessionStorage.getItem("sesionIniciada") == "true"){
-    // Eliminamos el enlace para iniciar sesión y lo reemplazamos por un ícono junto al nombre de usuario
-    document.getElementById("login-item").style.display = "none";
+    if(document.URL.includes("datos.html") == false){
+        // Eliminamos el enlace para iniciar sesión y lo reemplazamos por un ícono junto al nombre de usuario
+        document.getElementById("login-item").style.display = "none";
+    }
     // Mostramos el ícono de usuario
     document.getElementById("usr-container").style.display = "block";
 
     const usrName = document.getElementById("user-name");
     usrName.textContent = "lucasgar98";
     usrName.style = "font-weight: 800; font-size: 22px; font-family: 'Public Sans';";
+
+    const btnLogout = document.getElementById("logout-link");
+    btnLogout.addEventListener("click", function() {
+        sessionStorage.setItem("sesionIniciada", "false");
+        // Ocultamos el contenedor del ícono de usuario al cerrar sesión
+        document.getElementById("usr-container").style.display = "none";
+        // Mostramos la opción de inicio de sesión
+        document.getElementById("login-item").style.display = "block";
+    });
+
+    //---------- MENÚ DE USUARIO -----------
+    const btnUsuario = document.getElementById("bot-usuario");
+    const menuUsuario = document.getElementById("user-menu");
+
+    btnUsuario.addEventListener("click", function() {
+        menuUsuario.classList.toggle("active");
+    });
+
+    //---------- DATOS DEL USUARIO -----------
+    const btnPerfil = document.getElementById("perfil-link");
+    const usrData = document.getElementById("usr-data");
+
+    btnPerfil.addEventListener("click", function() {
+        usrData.classList.toggle("active");
+        const usrName = document.getElementById("user-name").textContent;
+        // Obtenemos los datos personales del usuario del localStorage
+        const usuarios = JSON.parse(localStorage.getItem("cuenta-usuario"));
+        console.log(usrName);
+        console.log(usuarios);
+        if(usuarios.length == undefined){
+            if(usuarios.usuario == usrName){
+                document.getElementById("nombre-usuario").textContent = usuarios.usuario;
+                document.getElementById("nombre").textContent = usuarios.nombre;
+                document.getElementById("apellido").textContent = usuarios.apellido;
+                document.getElementById("email").textContent = usuarios.email;
+                document.getElementById("profesion").textContent = usuarios.profesion;
+            }
+        }
+        else if(usuarios.length > 1){
+            for(let i=0; i<usuarios.length; i++){
+                if(usuarios[i].usuario == usrName){
+                    document.getElementById("nombre-usuario").textContent = usuarios[i].usuario;
+                    document.getElementById("nombre").textContent = usuarios[i].nombre;
+                    document.getElementById("apellido").textContent = usuarios[i].apellido;
+                    document.getElementById("email").textContent = usuarios[i].email;
+                    document.getElementById("profesion").textContent = usuarios[i].profesion;                
+                }
+            }        
+        }
+    });
+
+    /* Evento que se dispara cuando el usuario hace click en cualquier parte de
+    la página, haciendo que se cierren los menús desplegables */
+    document.addEventListener("click", (event) => {
+        if (!menuUsuario.contains(event.target) && !btnUsuario.contains(event.target)) {
+            menuUsuario.classList.remove("active");
+        }
+
+        if(!usrData.contains(event.target) && !btnPerfil.contains(event.target)){
+            usrData.classList.remove("active");
+        }
+    });
 }
 
 //---------- VALIDACIÓN DE FORMULARIO DE CONTACTO -----------
@@ -178,16 +289,15 @@ function mostrarError(message){
 // Función que oculta el mensaje de error si el formulario es correcto
 function ocultarError() {
     let errorElement = document.getElementById("form-error");
-    //console.log("Usuario y contraseña válidos");
     // Modificamos la propiedad display para ocultar el mensaje de error
     errorElement.style.display = "none";
 }
 
 function validarForm(){
     // Obtenemos los valores ingresados por el usuario en los campos del formulario
-    const name = document.getElementById("nombre").value;
-    const email = document.getElementById("mail").value;
-    const msg = document.getElementById("mensaje").value;
+    const name = document.getElementById("campo-nombre").value;
+    const email = document.getElementById("campo-mail").value;
+    const msg = document.getElementById("campo-mensaje").value;
 
     let esValido = true; // Variable bandera que indica si el usuario y contraseña son válidos
 
@@ -226,6 +336,7 @@ function validarForm(){
         }
         else {
             // Email vacío
+            console.log("Email vacío");
             mostrarError("Email vacío");
             esValido = false;
         }
@@ -249,51 +360,33 @@ function validarForm(){
     return esValido;
 }
 
+/* Definimos un evento que se dispara cada vez que se envía el formulario */
+if(document.URL.includes("contacto.html")){
+    // Validamos el formulario antes de enviarlo
+    const formContacto = document.getElementById("form-contacto");
+    formContacto.addEventListener("submit", function(event) {
+        event.preventDefault();
+        if(validarForm() == false){
+            alert("Formulario inválido");
+        }
+        else {
+            event.target.submit();
+        }
+    });
+}
+
 //---------- MENÚ HAMBURGUESA -----------
 const btnHamburguesa = document.getElementById("boton-hamburguesa");
 const listEnlaces = document.getElementById("list-enlaces");
 
 btnHamburguesa.addEventListener("click", function() {
-    console.log("Click sobre el menú hamburguesa");
     listEnlaces.classList.toggle("active");
 });
 
-//---------- MENÚ DE USUARIO -----------
-const btnUsuario = document.getElementById("bot-usuario");
-const menuUsuario = document.getElementById("user-menu");
-
-btnUsuario.addEventListener("click", function() {
-    menuUsuario.classList.toggle("active");
-});
-
+/* Evento que se dispara cuando el usuario hace click en cualquier parte de
+la página, haciendo que se cierre el menú hamburguesa */
 document.addEventListener("click", (event) => {
-    if (!menuUsuario.contains(event.target) && !btnUsuario.contains(event.target)) {
-        menuUsuario.classList.remove("active");
-    }
-    
     if(!listEnlaces.contains(event.target) && !btnHamburguesa.contains(event.target)){
         listEnlaces.classList.remove("active");
     }
-});
-
-const btnLogout = document.getElementById("logout-link");
-btnLogout.addEventListener("click", function() {
-    sessionStorage.setItem("sesionIniciada", "false");
-    // Ocultamos el contenedor del ícono de usuario al cerrar sesión
-    document.getElementById("usr-container").style.display = "none";
-    // Mostramos la opción de inicio de sesión
-    document.getElementById("login-item").style.display = "block";
-})
-
-/* Definimos un evento que se dispara cada vez que se envía el formulario */
-const formContacto = document.getElementById("form-contacto");
-formContacto.addEventListener("submit", function(event) {
-    event.preventDefault();
-    if(validarForm() == false){
-        alert("Formulario inválido");
-    }
-    else {
-        event.target.submit();
-    }
-
 });
