@@ -14,15 +14,13 @@
 /* Selector de etiqueta html */
 html {
     scroll-behavior: smooth; /* Hace que el scrolleo sea suave */
-    width: 100%; /* La página ocupa todo el ancho de la pantalla */
-    min-height: 100vh; /* La página ocupa toda la altura de la ventana (viewport) */
     overflow-x: hidden; /* Garantiza que no haya desplazamiento horizontal */
 }
 
 /* Selector de etiqueta body */
 body {
     font-family: 'Public Sans', sans-serif;
-    font-size: 16px; /* Tamño de la fuente base del documento (16px) */
+    font-size: 16px; /* Tamaño de la fuente base del documento (16px) */
     background-color: azure !important; /* Definimos este estilo como prioritario */
     color: rgb(80, 80, 80); /* Color del texto dentro del body */
 }
@@ -36,21 +34,22 @@ header {
     width: 100vw; /* El header ocupa el 100% del ancho del viewport */
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+    font-family: 'Figtree', sans-serif;
+}
+
 /* Selector de etiqueta main */
 main {
     position: relative; /* Permite desplazar un elemento respecto a su posición original sin alterar el flujo del documento */
     margin-top: 1.5rem; /* Margen superior del main que evita que esté pegado al nav */
+    margin-bottom: 1rem; /* Margen inferior del main que evita que esté pegado al footer */
     width: 100vw; /* El main ocupa el 100% del ancho del viewport */
-    display: flex;
-    flex-wrap: wrap; /* Permite a los ítems flexibles pasar a la siguiente línea si no caben en el contenedor */
     padding-left: 1rem;
     padding-right: 1rem;
-}
-
-/* Selector de etiqueta h1 */
-h1 {
-    font-weight: 700; /* Grosor de la fuente */
-    font-size: 2rem; /* Tamaño de la fuente */
+    
 }
 
 /* Estilos de las secciones */
@@ -69,7 +68,6 @@ footer {
     justify-content: center;
     align-items: center;
     text-align: center; /* Texto alineado al centro */
-
 }
 
 /* ========= ESTILOS DE INDEX.HTML ========== */
@@ -77,8 +75,6 @@ footer {
 /* ========= ESTILOS DEL HEADER ========= */
 /* Contenedor del logo */
 .logo-container {
-    display: flex;
-    margin-right: auto; /* Logramos que la imagen esté siempre a la izquierda */
     padding-left: 1%;
 }
 
@@ -88,33 +84,20 @@ footer {
     height: 60px; /* Altura de la imagen */
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 2rem;
-    padding-left: 2rem;
-}
-
 /* Lista de enlaces de la barra superior */
 .lista-enlaces {
-    /* display: flex;
-    justify-content: flex-end;
-    align-items: center; 
-    padding-right: 2rem;
-    padding-left: 2rem; */
     display: flex;
-    font-family: 'Figtree', sans-serif;
 }
 
 /* Elementos de la lista de enlaces */
 .link {
-    color: rgb(99, 99, 99);
     font-weight: bold;
     display: flex;
     margin-left: 2rem;
+    color: rgb(99, 99, 99);
 }
 
+/* Menú hamburguesa */
 .menu-hamburguesa {
     display: none;
     background: none;
@@ -124,20 +107,23 @@ footer {
     cursor: pointer;
 }
 
+/* Contenedor del menú de usuario */
 .usuario-container {
     position: relative;
     display: none;
 }
 
+/* Botón del menú de usuario */
 .boton-usuario {
     background: none;
     border: none;
     color: rgb(99, 99, 99);
     font-size: 18px;
     cursor: pointer;
+    margin-left: 32px;
 }
 
-/* Menú desplegable (oculto por defecto) */
+/* Menú de usuario desplegable (oculto por defecto) */
 .usuario-menu {
     position: absolute;
     top: 50px;
@@ -145,26 +131,49 @@ footer {
     background-color: rgb(191, 247, 247);
     border-radius: 8px;
     padding: 10px 0;
-    width: 160px;
+    width: 200px;
     display: none;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
     z-index: 2;
-    gap: 20px;
-    font-family: 'Figtree', sans-serif;
+    gap: 20px; /* Separación entre los elementos del menú */
 }
 
+/* Enlaces del menú de usuario */
 .usuario-menu li a {
-    display: block;
     margin: 0;
 }
 
-/* .usuario-menu li a:hover {
-    background-color: rgb(160, 245, 245);
-} */
+/* Propiedad para resaltar las opciones del menú de usuario al posicionar el cursor sobre ellas */
+.usuario-menu li a:hover {
+    background-color: rgba(130, 241, 241, 0.708);
+}
 
+/* Clase activa: muestra el menú de usuario cuando se hace clic en el ícono de usuario */
 .usuario-menu.active {
+    display: flex;
+}
+
+/* Cuadro que muestra los datos personales del usuario, el cual se muestra al
+hacer clic en la opción Perfil del menú de usuario */
+.user-data {
+    position: absolute;
+    top: 80px;
+    right: 200px;
+    background-color: rgb(218, 226, 249);
+    border-radius: 12px;
+    padding: 10px;
+    width: 250px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 3;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Clase activa: muestra el menú de usuario cuando se hace clic en la opción perfil */
+.user-data.active {
     display: flex;
 }
 
@@ -183,7 +192,6 @@ footer {
 .ema-container {
     display: flex;
     justify-content: center;
-    flex-grow: 1;
 }
 
 /* Imagen de la EMA */
@@ -238,16 +246,11 @@ footer {
 .mapa {
     display: flex;
     justify-content: center;
-    flex-grow: 1;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2%; /* Margen inferior */
 }
 
 .mapa iframe {
     width: 100%; /* El mapa ocupa el 100% del contenedor padre */
     max-width: 700px; /* Tamaño máximo de 700px */
-    height: auto; /* Altura automática */
     aspect-ratio: 4/3; /* Relación de aspecto de 4:3 */
     border: 0;
     border-radius: 1rem;
@@ -284,16 +287,10 @@ footer {
 
 /* Copyright */
 .copyright {
-    margin-left: 1%;
     font-size: 14px;
-    font-weight: 400;
 }
 
 /* ======== ESTILOS DE DATOS.HTML ======== */
-/* Ícono de usuario */
-.fa-solid {
-    margin-left: 32px;
-}
 
 /* Título "Últimos datos" */
 .tit-datos {
@@ -306,13 +303,6 @@ footer {
     margin-bottom: 3%;
 }
 
-/* Contenedor de la tabla */
-.tabla-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 /* Tabla */
 .tabla-datos {
     background-color: rgb(191, 219, 251);
@@ -322,19 +312,17 @@ footer {
     font-family: 'Figtree', sans-serif;
     font-size: 14px;
     text-align: center; /* Texto alineado al centro */
-    margin-bottom: 1rem;
 }
 
 /* Celdas de la tabla */
-td {
+.tabla-datos td {
     height: 3rem; /* Altura de cada celda */
-    border-bottom: 1px solid rgba(169, 193, 220, 0.304); /* Borde inferior de cada celda */
+    border-bottom: 1px solid rgba(169, 193, 220, 0.502); /* Borde inferior de cada celda */
 }
 
 /* ======== ESTILOS DE CONTACTO.HTML ======== */
 /* Título "Nos interesa conocer su opinión */
 .tit-contacto {
-    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -344,61 +332,51 @@ td {
     margin-bottom: 1.5rem;
 }
 
+/* Contenedor del mensaje de error */
 #error-container {
     display: flex;
     justify-content: center;
 }
 
+/* Mensaje de error que se muestra por encima del formulario */
 #form-error {
     display: none;
     justify-content: center;
     text-align: center;
     background-color: rgb(248, 206, 206);
-    width: 60%;
+    width: 600px;
     border-radius: 0.5rem;
     padding: 1%;
     margin-bottom: 12px;
 }
 
-/* Contenedor del formulario */
-.form-container {
-    text-align: center;
-    padding-bottom: 16px;
-}
-
 /* Formulario */
 .formulario {
+    text-align: center;
+    padding-bottom: 16px;
     padding-top: 12px;
     background-color: rgb(214, 226, 241);
     font-size: 18px;
     border-radius: 24px;
-    width: 60%; /* El formulario ocupa un 60% del ancho del contenedor padre */
+    width: 600px;
     margin: auto;
 }
 
 /* Campos de nombre y apellido y de dirección de correo electrónico */
-input[type="text"], input[type="email"] {
-    color: rgb(50, 50, 50);
-    width: 50%; /* Ancho del 50% */
-    font-size: 16px;
-    font-weight: 400;
-    margin: 16px;
-    border: 1px solid rgb(23, 63, 113); /* Borde sólido de 1 px */
-    border-radius: 8px;
-    padding: 12px;
-    font-family: 'Public Sans' sans-serif;
+.formulario > input[type="text"], input[type="email"] {
+    margin-bottom: 12px;
 }
 
 /* Área de texto (campo de mensaje) */
-textarea {
+.formulario > textarea {
     color: rgb(50, 50, 50);
     width: 90%;  /* Ocupa el 90% del ancho del formulario */
     max-width: 100%;  /* Garantizamos que el área de texto no se salga del contenedor */
     min-height: 200px;  /* Altura mínima de 200px*/
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 32px;  /* Margen inferior */
-    margin-top: 16px;  /* Margen superior */
+    margin-bottom: 16px;  /* Margen inferior */
+    margin-top: 8px;  /* Margen superior */
     border: 1px solid rgb(23, 63, 113);
     border-radius: 8px;
     padding: 8px;
@@ -406,18 +384,18 @@ textarea {
 }
 
 .formulario > label {
-    font-size: 18px;
     font-weight: bold; /* Texto en negrita */
 }
 
 /* Botón de enviar */
 .bot-enviar {
-    margin-bottom: 24px; /* Margen inferior */
     padding: 12px;
     background-color: rgb(23, 63, 113);
     color: rgb(220, 220, 220); /* Color del texto dentro del botón */
     font-size: 16px;
     border-radius: 10px;
+    font-family: 'Public Sans', sans-serif;
+    border: 0;
 }
 
 /* Cambiamos el color del botón al posicionar el cursor sobre el mismo */
@@ -437,7 +415,6 @@ textarea {
 /* Contenedor sobre nosotros */
 .acerca-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 3rem; /* Separación entre el texto y la imagen */
     padding: 2%;
@@ -448,7 +425,6 @@ textarea {
 /* Contenedores de la imagen y el texto */
 .acerca-img, .acerca-text {
     flex-grow: 1;
-    flex-shrink: 1;
     flex-basis: 0%;
 }
 
@@ -466,12 +442,14 @@ textarea {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 /* Lista desordenada */
 #como-funciona ul {
     margin-left: 1%; /* Margen izquierdo */
     margin-right: 1%; /* Margen derecho */
-    margin-bottom: 3%;
+    margin-bottom: 1%; /* Margen inferior */
 }
+
 /* Elementos de la lista */
 #como-funciona li {
     list-style: circle; /* Estilo de la viñeta (círculo) */
@@ -479,28 +457,35 @@ textarea {
     font-size: 18px;
 }
 
-/* ======== ESTILOS DE LOGIN.HTML ====== */
-#img-login-container {
+/* ======== ESTILOS DE LOGIN.HTML Y SIGNUP.HTML ====== */
+
+/* Contenedor del logo */
+.img-signup-login-container {
     display: flex;
     justify-content: center;
 }
 
-#img-login {
+/* Logo de la estación meteorológica */
+.img-signup-login {
     width: 320px;
     height: 120px;
 }
 
-#txt-login {
+/* Texto de inicio de sesión */
+.txt-signup-login {
     display: flex;
     justify-content: center;
+    text-align: center;
     margin-bottom: 1%;
 }
 
-#error {
+/* Contenedor del mensaje de error */
+#error-cont {
     display: flex;
     justify-content: center;
 }
 
+/* Mensaje de error (oculto por defecto) */
 #login-error {
     display: none;
     justify-content: center;
@@ -508,26 +493,28 @@ textarea {
     background-color: rgb(248, 206, 206);
     border-radius: 0.5rem;
     margin-bottom: 12px;
-    width: 50%;
+    width: 400px;
 }
 
-#form-login-cont {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-#form-login {
+/* Formularios */
+.form-signup-login {
     background-color: rgb(208, 212, 252);
     border-radius: 1rem;
-    width: 50%;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    padding-top: 5px;
 }
 
-#usuario {
-    margin-top: 24px !important;
+/* Etiquetas del formulario para crear cuenta */
+.label-field {
+    font-size: 18px;
+    font-weight: 500; /* Texto en negrita */
+    margin-top: 16px;
 }
 
-#usuario, #contraseña {
+/* Campos de los formularios */
+.form-fields {
     color: rgb(50, 50, 50);
     width: 70%;
     font-size: 1rem;
@@ -536,13 +523,20 @@ textarea {
     border: 1px solid rgb(53, 103, 165);
     border-radius: 8px;
     padding: 12px;
-    margin: 12px;
+    margin-top: 12px;
 }
 
-#but-login {
+/* Campo de error (formulario para crear cuenta) */
+.error-field {
+    color:  rgb(241, 54, 54);
+    display: none;
+}
+
+/* Botones de los formularios */
+.but-form {
     font-size: 16px;
     font-family: 'Public Sans', sans-serif;
-    margin-bottom: 14px;
+    margin: 12px;
     padding: 12px;
     background-color: rgb(4, 79, 172);
     color: rgb(233, 233, 233);
@@ -550,25 +544,23 @@ textarea {
     border: 0;
 }
 
-#cont-forg-pass {
-    justify-content: center;
-    margin-bottom: 12px;
+.but-form:hover {
+    background-color: rgb(3, 47, 100);
 }
 
-#forgotten-pass {
-    color: rgb(90, 90, 90);
-}
-
+/* Contenedor para registrarse, el cual se encuentra por debajo del formulario */
 #signup-cont {
-    margin-top: 3%;
+    margin-top: 16px;
     display: block;
     text-align: center;
 }
 
+/* Texto "Registrarse como usuario" */
 .txt-signup {
     margin-bottom: 8px;
 }
 
+/* Botón para crear nueva cuenta */
 #but-signup {
     margin-top: 12px;
     padding: 10px;
@@ -591,6 +583,8 @@ cuando el ancho está entre 700 y 1200 px */
 /* Permite que la imagen quede debajo del texto en la sección "Acerca de nosotros" y
 que se reduzca el tamaño de los campos del formulario cuando el ancho es menor a 800px */
 @media screen and (max-width: 800px) {
+
+    /* ======== ESTILOS DE NOSOTROS.HTML ======== */
     .acerca-container {
         flex-direction: column;
         gap: 2rem;
@@ -603,36 +597,21 @@ que se reduzca el tamaño de los campos del formulario cuando el ancho es menor 
         margin-bottom: 1rem;
     }
 
+    /* ======== ESTILOS DE CONTACTO.HTML ======== */
     /* Modificamos el tamaño de los campos de texto del formulario */
     .formulario, #form-error {
         width: 90%;
     }
 
-    input[type="text"], input[type="email"] {
-        width: 70%;
-        font-size: 16px;
-    }
-
-    textarea {
-        font-size: 16px;
-    }
-
 }
 
-/* Permite que los elementos de la barra de navegación y los contenedores
-de datos actuales se muestren uno debajo del otro cuando el ancho es menor a 700 px */
+/* Permite que los contenedores de datos actuales se muestren uno debajo del otro 
+y que se habilite el menú hamburguesa cuando el ancho es menor a 700 px */
 @media screen and (max-width: 700px) {
-    /* Convertimos al header en una columna en pantallas pequeñas */
-    /*header {
-        flex-direction: column; /* Pone el logo arriba y los enlaces abajo */
-        /*align-items: center;
-        justify-content: center;
-    } */
+    /* ======== ESTILOS DEL HEADER ======== */
 
-    /* #menu-hamburguesa {
-        display: flex;
-    } */
-
+    /* Cambiamos los estilos de la barra de navegación para que los enlaces
+    queden dentro del menú hamburguesa */
     .lista-enlaces {
         display: none;
         flex-direction: column;
@@ -647,41 +626,41 @@ de datos actuales se muestren uno debajo del otro cuando el ancho es menor a 700
         gap: 20px;
         z-index: 1;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-        /* gap: 0.5rem;
-        margin-top: 1rem; */
+    }
+    
+    .user-data {
+        right: 50%;
+        top: 180px;
     }
 
+    /* Enlaces de la barra de navegación */
     .link {
         margin: 0;
     }
 
+    /* Menú hamburguesa */
     .menu-hamburguesa {
         display: block;
     }
 
+    /* Mostramos los enlaces cuando se hace clic en el ícono del menú hamburguesa */
     .lista-enlaces.active {
         display: flex;
     }
 
-    #icon-container {
-        padding-right: 25px;
-        padding-bottom: 5px;
+    .lista-enlaces a:hover {
+        background-color:rgba(130, 241, 241, 0.708);
     }
 
-    /* Centramos el logo dentro del contenedor */
-    /* .logo-container {
-        justify-content: center; 
-        width: 100%;
-        margin: 0;
-    } */
-
+    /* ======== ESTILOS DEL MAIN (INDEX.HTML) ======== */
     /* Ubicamos los contenedores de los datos actuales uno debajo del otro */
     .var-container {
         grid-template-columns: repeat(1, 1fr);
         gap: 1;
-        display:block;
+        display: block;
     }
 
+    /* ======== ESTILOS DEL MAIN (DATOS.HTML) ======== */
     /* Reducimos el tamaño de los elementos de la tabla de datos */
     .tabla-datos {
         font-size: 10px;
@@ -692,4 +671,39 @@ de datos actuales se muestren uno debajo del otro cuando el ancho es menor a 700
         padding: 4px;
     }
 
+}
+
+/* Permite reducir el tamaño de las fuente de los formularios cuando el
+ancho es menor a 500 px */
+@media screen and (max-width: 500px) {
+
+    /* ======== ESTILOS DE LOGIN.HTML Y SIGNUP.HTML ======== */
+    /* Formulario de inicio de sesión y creación de cuenta */
+    .form-signup-login {
+        width: 80%;
+    }
+
+    /* Campos del formulario y botones */
+    .form-fields, .but-form {
+        font-size: 14px;
+    }
+
+    #but-signup {
+        font-size: 14px;
+    }
+
+    #login-error {
+        width: 80%;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* ======== ESTILOS DEL CONTACTO.HTML ======== */
+    .formulario > textarea {
+        font-size: 16px;
+    }
+    
+    .bot-enviar {
+        font-size: 14px;
+    }
 }
