@@ -57,7 +57,8 @@ function parseDateTime(dateTime) {
 }
 
 /* Hacemos la consulta a la API ThingSpeak para obtener los datos actuales */
-if(document.URL.includes("index.html")){
+if(!document.URL.includes("datos.html") && !document.URL.includes("nosotros.html")
+    && !document.URL.includes("contacto.html")){
     fetch("https://api.thingspeak.com/channels/2317526/feeds.json?api_key=VL73GBXA69XAZRSG&results=1")
         .then(r => r.json())
         .then(data => {
@@ -121,7 +122,8 @@ function defPaginaOrigen(){
     // Separamos la URL en subcadenas y accedemos al último elemento (página de origen)
     const URLFields = document.URL.split("/");
     // Definimos la página de origen
-    if(URLFields[URLFields.length - 1].includes("index.html") == true){
+    if(!URLFields[URLFields.length - 1].includes("contacto.html") &&
+        !URLFields[URLFields.length - 1].includes("nosotros.html")){
         sessionStorage.setItem("origen", "index.html");
     }
     else if(URLFields[URLFields.length - 1].includes("contacto.html") == true){
@@ -141,7 +143,8 @@ function defPaginaDestino(linkClicked){
         sessionStorage.setItem("destino", "datos.html");
     }
     else if(linkClicked == "Iniciar sesión"){
-        if(URLFields[URLFields.length - 1].includes("index.html") == true){
+        if(!URLFields[URLFields.length - 1].includes("contacto.html") &&
+        !URLFields[URLFields.length - 1].includes("nosotros.html")){
             sessionStorage.setItem("destino", "index.html");
         }
         else if(URLFields[URLFields.length - 1].includes("contacto.html") == true){
@@ -204,6 +207,12 @@ if(sessionStorage.getItem("sesionIniciada") == "true"){
     if(document.URL.includes("datos.html") == false){
         // Eliminamos el enlace para iniciar sesión y lo reemplazamos por un ícono junto al nombre de usuario
         document.getElementById("login-item").style.display = "none";
+        // Mostramos la opción de cerrar sesión
+        document.getElementById("logout-link").style.display = "block";
+    }
+    else {
+        // Ocultamos la opción de cerrar sesión en la página de datos
+        document.getElementById("logout-link").style.display = "none";
     }
     // Mostramos el ícono de usuario
     document.getElementById("usr-container").style.display = "block";
