@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <main>
+        <section>
+            <!-- Agregamos el logo de la página por encima del formulario -->
+            <div class="img-signup-login-container">
+                <img class="img-signup-login" src="../img/logo_ema.png" alt="logo del sitio">
+            </div>
+            <div class="txt-signup-login">
+                <h2>Crear nueva cuenta</h2>
+            </div>
+            <!-- Insertamos el formulario para iniciar sesión -->
+            <form class="form-signup-login" novalidate>
+                <!-- Definimos las entradas del formulario-->
+                <div class="label-field">
+                    <label for="nombre-usuario">Nombre de usuario</label> <br>
+                </div>
+                <input type="text" class="form-fields" id="usuario" required> <br>
+                <div class="error-field" id="error-usuario">
+                    <small>Falta el nombre de usuario</small> <br>
+                </div>
+                <div class="label-field">
+                    <label for="contraseña">Contraseña</label> <br>
+                </div>
+                <small>La contraseña debe tener como mínimo 8 caracteres.</small> <br>
+                <input type="password" class="form-fields" id="contraseña" required> <br>
+                <div class="error-field" id="error-contraseña">
+                    <small>Falta la contraseña</small> <br>
+                </div>
+                <div class="label-field">
+                    <label for="email-usuario">Dirección de correo electrónico</label> <br>
+                </div>
+                <input type="email" class="form-fields" id="email" required> <br>
+                <div class="error-field" id="error-email">
+                    <small>Falta la dirección de correo</small> <br>
+                </div>
+                <div class="label-field">
+                    <label for="nombre">Nombre</label> <br>
+                </div>
+                <input type="text" class="form-fields" id="nombre" required> <br>
+                <div class="error-field" id="error-nombre">
+                    <small>Falta el nombre</small> <br>
+                </div>
+                <div class="label-field">
+                    <label for="apellido">Apellido</label> <br>
+                </div>
+                <input type="text" class="form-fields"  id="apellido" required> <br>
+                <div class="error-field" id="error-apellido">
+                    <small>Falta el apellido</small> <br>
+                </div>
+                <div class="label-field">
+                    <label for="profesion">Profesión</label> <br>
+                </div>
+                <input type="text" class="form-fields" id="profesion" required> <br>
+                <div class="error-field" id="error-profesion">
+                    <small>Falta la profesión</small> <br>
+                </div>
+                <!-- Botones por debajo del formulario -->
+                <div class="botones-cont">
+                    <button type="button" class="but-form" id="bot-signup">Crear cuenta</button>
+                    <button type="button" class="but-form" id="but-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!-- Script -->
+    <script src="../js/signup.js"></script>
+</body>
+</html>
